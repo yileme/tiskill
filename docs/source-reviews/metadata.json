@@ -1,0 +1,107 @@
+{
+  "scope": "Full-page reviews: four sources integrated in 0.9.1 and EU-TIPS in 0.9.2; counts verify records, not comprehension",
+  "unique_physical_pages": 536,
+  "sources": [
+    {
+      "id": "EU-GARDNER",
+      "title": "Misused English words and expressions in EU publications",
+      "issuer": "European Court of Auditors",
+      "date": "May 2016; signed preface 25 May 2016",
+      "filename": "EN_TERMINOLOGY_PUBLICATION.pdf",
+      "pdf_pages": 59,
+      "read_pdf_ranges": [
+        [
+          1,
+          59
+        ]
+      ],
+      "ledger": "gardner-ledger.md",
+      "edition": "May 2016 edition",
+      "identity_locator": "PDF 2 preface; PDF 1 cover; printed folios match except cover",
+      "external_current_status_checked": false,
+      "author": "Jeremy Gardner",
+      "sha256": "118b8c95caecebf6f31532b6d4f9a4d95d0589c8b045fb5ffcc18a3d54462254"
+    },
+    {
+      "id": "EU-CLEAR",
+      "title": "How to write clearly",
+      "issuer": "European Commission, Directorate-General for Translation; Publications Office of the European Union, Luxembourg",
+      "date": "2015",
+      "filename": "how to write clearly-HC0215257ENN.pdf",
+      "pdf_pages": 16,
+      "read_pdf_ranges": [
+        [
+          1,
+          16
+        ]
+      ],
+      "ledger": "clarity-ledger.md",
+      "edition": "2015 imprint; no numbered edition",
+      "identity_locator": "PDF 15 imprint; PDF 16 back cover; printed 2–15 match PDF",
+      "external_current_status_checked": false,
+      "sha256": "4daba9a1fe7c4a4dae81b7fb864b8ecfb7ce364c6e862e801603a9812c8499b6",
+      "isbn": "978-92-79-46884-1",
+      "doi": "10.2782/022405",
+      "publication_code": "HC-02-15-257-EN-N"
+    },
+    {
+      "id": "EU-DGT",
+      "title": "English Style Guide: A handbook for authors and translators in the European Commission",
+      "issuer": "European Commission, Directorate-General for Translation",
+      "date": "January 2016; updated November 2025, running date 21 November 2025",
+      "filename": "styleguide_english_dgt_en.pdf",
+      "pdf_pages": 138,
+      "read_pdf_ranges": [
+        [
+          1,
+          138
+        ]
+      ],
+      "ledger": "dgt-ledger.md",
+      "edition": "Eighth edition",
+      "identity_locator": "PDF 1 title; printed 1–132 = PDF 7–138",
+      "external_current_status_checked": false,
+      "sha256": "9e4efd1081c1fcb22bb43c710fa552578d2bb034dff53c7244974b8e322ff551"
+    },
+    {
+      "id": "EU-ISG",
+      "title": "Interinstitutional Style Guide",
+      "issuer": "Publications Office of the European Union, Luxembourg",
+      "date": "2026; last update 15 October 2026",
+      "filename": "ISG_en_4web.pdf",
+      "pdf_pages": 306,
+      "read_pdf_ranges": [
+        [
+          1,
+          306
+        ]
+      ],
+      "ledger": "isg-ledger.md",
+      "edition": "Online snapshot, last update 15.10.2026",
+      "identity_locator": "PDF 2 title, PDF 3 imprint; numbered folios match PDF",
+      "external_current_status_checked": false,
+      "sha256": "1dedccfd659b533fa16164d33a16c1d0246fd48b520fb9804f513ef73ccd3863"
+    },
+    {
+      "id": "EU-TIPS",
+      "title": "Clear English: Tips for Translators",
+      "issuer": "European Commission, Directorate-General for Translation (DGT)",
+      "editor": "Selim Earls",
+      "date": "2014 (copyright; no separate publication or revision date stated)",
+      "edition": "No numbered edition stated",
+      "filename": "clear-english-tips-translators_en.pdf",
+      "pdf_pages": 17,
+      "read_pdf_ranges": [
+        [
+          1,
+          17
+        ]
+      ],
+      "ledger": "clear-english-ledger.md",
+      "identity_locator": "PDF 1 cover; PDF 17 credits/copyright; PDF 1–2 unnumbered, PDF 3–17 = printed 3–17",
+      "external_current_status_checked": false,
+      "sha256": "b2c1ec0cbdf94a52d883fceccb6d12026297122bcd6682abec62380d2b5a5dfd",
+      "production_metadata_note": "PDF created/modified 26 February 2026; Author ROBSON Ian (DGT) is production metadata, not the credited editor."
+    }
+  ]
+}

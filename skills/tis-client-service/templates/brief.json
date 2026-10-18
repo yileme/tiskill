@@ -1,0 +1,303 @@
+{
+  "schema": 1,
+  "id": "replace-with-project-id",
+  "status": "precontract_draft",
+  "service": "translation",
+  "facts": {
+    "client": {
+      "value": null,
+      "state": "pending",
+      "source": {
+        "message": null,
+        "excerpt": null
+      }
+    },
+    "contact": {
+      "value": null,
+      "state": "pending",
+      "source": {
+        "message": null,
+        "excerpt": null
+      }
+    },
+    "language_direction": {
+      "value": null,
+      "state": "pending",
+      "source": {
+        "message": null,
+        "excerpt": null
+      }
+    },
+    "audience": {
+      "value": null,
+      "state": "pending",
+      "source": {
+        "message": null,
+        "excerpt": null
+      }
+    },
+    "purpose": {
+      "value": null,
+      "state": "pending",
+      "source": {
+        "message": null,
+        "excerpt": null
+      }
+    },
+    "locale": {
+      "value": null,
+      "state": "pending",
+      "source": {
+        "message": null,
+        "excerpt": null
+      }
+    },
+    "deadline": {
+      "value": null,
+      "state": "pending",
+      "source": {
+        "message": null,
+        "excerpt": null
+      }
+    },
+    "timezone": {
+      "value": null,
+      "state": "pending",
+      "source": {
+        "message": null,
+        "excerpt": null
+      }
+    },
+    "source_refs": {
+      "value": null,
+      "state": "pending",
+      "source": {
+        "message": null,
+        "excerpt": null
+      }
+    },
+    "target_refs": {
+      "value": null,
+      "state": "pending",
+      "source": {
+        "message": null,
+        "excerpt": null
+      }
+    },
+    "resources": {
+      "value": null,
+      "state": "pending",
+      "source": {
+        "message": null,
+        "excerpt": null
+      }
+    },
+    "deliverables": {
+      "value": null,
+      "state": "pending",
+      "source": {
+        "message": null,
+        "excerpt": null
+      }
+    },
+    "count_basis": {
+      "value": null,
+      "state": "pending",
+      "source": {
+        "message": null,
+        "excerpt": null
+      }
+    },
+    "process": {
+      "value": null,
+      "state": "pending",
+      "source": {
+        "message": null,
+        "excerpt": null
+      }
+    },
+    "staffing": {
+      "value": null,
+      "state": "pending",
+      "source": {
+        "message": null,
+        "excerpt": null
+      }
+    },
+    "schedule": {
+      "value": null,
+      "state": "pending",
+      "source": {
+        "message": null,
+        "excerpt": null
+      }
+    },
+    "location": {
+      "value": null,
+      "state": "pending",
+      "source": {
+        "message": null,
+        "excerpt": null
+      }
+    },
+    "platform": {
+      "value": null,
+      "state": "pending",
+      "source": {
+        "message": null,
+        "excerpt": null
+      }
+    },
+    "participants": {
+      "value": null,
+      "state": "pending",
+      "source": {
+        "message": null,
+        "excerpt": null
+      }
+    },
+    "background": {
+      "value": null,
+      "state": "pending",
+      "source": {
+        "message": null,
+        "excerpt": null
+      }
+    },
+    "materials": {
+      "value": null,
+      "state": "pending",
+      "source": {
+        "message": null,
+        "excerpt": null
+      }
+    },
+    "preparation": {
+      "value": null,
+      "state": "pending",
+      "source": {
+        "message": null,
+        "excerpt": null
+      }
+    },
+    "technical_test": {
+      "value": null,
+      "state": "pending",
+      "source": {
+        "message": null,
+        "excerpt": null
+      }
+    },
+    "quote_expiry": {
+      "value": null,
+      "state": "pending",
+      "source": {
+        "message": null,
+        "excerpt": null
+      }
+    },
+    "payment": {
+      "value": null,
+      "state": "pending",
+      "source": {
+        "message": null,
+        "excerpt": null
+      }
+    },
+    "revision_rounds": {
+      "value": null,
+      "state": "pending",
+      "source": {
+        "message": null,
+        "excerpt": null
+      }
+    },
+    "cancellation": {
+      "value": null,
+      "state": "pending",
+      "source": {
+        "message": null,
+        "excerpt": null
+      }
+    },
+    "confidentiality": {
+      "value": null,
+      "state": "pending",
+      "source": {
+        "message": null,
+        "excerpt": null
+      }
+    },
+    "ai_permission": {
+      "value": null,
+      "state": "pending",
+      "source": {
+        "message": null,
+        "excerpt": null
+      }
+    },
+    "acceptance": {
+      "value": null,
+      "state": "pending",
+      "source": {
+        "message": null,
+        "excerpt": null
+      }
+    },
+    "storage_rights": {
+      "value": null,
+      "state": "pending",
+      "source": {
+        "message": null,
+        "excerpt": null
+      }
+    },
+    "taxes": {
+      "value": null,
+      "state": "pending",
+      "source": {
+        "message": null,
+        "excerpt": null
+      }
+    },
+    "discount": {
+      "value": null,
+      "state": "pending",
+      "source": {
+        "message": null,
+        "excerpt": null
+      }
+    },
+    "rush": {
+      "value": null,
+      "state": "pending",
+      "source": {
+        "message": null,
+        "excerpt": null
+      }
+    }
+  },
+  "conflicts": [],
+  "decisions": [],
+  "quote": {
+    "currency": {
+      "value": null,
+      "state": "pending",
+      "source": {
+        "message": null,
+        "excerpt": null
+      }
+    },
+    "minor_units": {
+      "value": null,
+      "state": "pending",
+      "source": {
+        "message": null,
+        "excerpt": null
+      }
+    },
+    "scopes": [],
+    "pm": [],
+    "adjustments": []
+  }
+}

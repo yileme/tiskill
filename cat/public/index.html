@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#edf6ff">
+  <title>Folio 翻译工作台</title>
+  <link rel="stylesheet" href="./style.css">
+  <script src="./markdown.js" defer></script>
+  <script src="./app.js" defer></script>
+  <script src="./resources.js" defer></script>
+  <script src="./details.js" defer></script>
+  <script src="./layout.js" defer></script>
+</head>
+<body>
+<div class="app-shell">
+  <header class="topbar">
+    <a class="brand" href="/" aria-label="Folio 翻译工作台首页">
+      <span class="brand-mark">F<span class="brand-dot">.</span></span>
+      <span class="brand-text">Folio <small>翻译工作台</small></span>
+    </a>
+    <div class="doc-id">
+      <span class="doc-title" id="doc-title">未命名文稿</span>
+      <span class="doc-meta" id="doc-meta">本地项目 · 改动自动保存</span>
+    </div>
+    <div class="top-actions">
+      <span class="save-indicator" id="save-indicator" role="status" aria-live="polite"><span class="indicator-dot"></span>就绪</span>
+      <button class="button button-quiet" id="shortcut-open" type="button">快捷键</button>
+      <button class="button button-quiet" id="import-open" type="button">导入原文</button>
+      <button class="button button-dark" id="export-open" type="button" aria-haspopup="menu" aria-expanded="false">导出译稿 ▾</button>
+    </div>
+  </header>
+
+  <div class="toolbar" role="toolbar" aria-label="段落工具">
+    <div class="tool-group">
+      <button class="tool" id="prev-segment" type="button" title="上一段（Alt+↑）">↑ 上一段</button>
+      <button class="tool" id="next-segment" type="button" title="下一段（Alt+↓）">下一段 ↓</button>
+      <button class="tool tool-attention" id="next-unconfirmed" type="button" title="跳到下一处未确认段落">未确认 <span class="count-badge" id="unconfirmed-count">0</span></button>
+    </div>
+    <div class="tool-group">
+      <button class="tool tool-primary" id="confirm-segment" type="button" title="确认当前译文并跳到下一段">确认译文 <kbd>⌘/⌃ ⏎</kbd></button>
+      <button class="tool" id="add-selection-term" type="button" title="将同一段的原文和译文选区添加到术语库">选区添加术语</button>
+      <button class="tool" id="undo-segment" type="button">撤销修改</button>
+    </div>
+    <div class="tool-group filter-group" role="group" aria-label="按状态过滤段落">
+      <span class="tool-label">过滤</span>
+      <button class="chip is-on" type="button" data-filter="all">全部</button>
+      <button class="chip" type="button" data-filter="empty">未开始</button>
+      <button class="chip" type="button" data-filter="draft">已编辑</button>
+      <button class="chip" type="button" data-filter="confirmed">已确认</button>
+      <button class="chip" type="button" data-filter="repetition">重复</button>
+    </div>
+    <div class="tool-group search-group">
+      <label class="sr-only" for="quick-find">快速查找</label>
+      <input id="quick-find" type="search" placeholder="快速查找原文或译文" autocomplete="off">
+    </div>
+    <div class="tool-spacer"></div>
+    <div class="tool-group display-group" role="group" aria-label="显示设置">
+      <span class="tool-label">行高</span>
+      <button class="chip" type="button" data-density="compact">紧凑</button>
+      <button class="chip is-on" type="button" data-density="cozy">标准</button>
+      <button class="chip" type="button" data-density="roomy">宽松</button>
+      <button class="tool tool-icon" id="font-down" type="button" aria-label="缩小译文字号" title="缩小译文字号">A−</button>
+      <button class="tool tool-icon" id="font-up" type="button" aria-label="放大译文字号" title="放大译文字号">A+</button>
+    </div>
+    <div class="tool-stats" id="tool-stats">已确认 0 / 0</div>
+  </div>
+
+  <main class="workspace" id="workspace">
+<div class="editor-column" id="editor-column">
+<section class="grid-pane" id="editor-pane" aria-label="翻译网格">
+      <div class="grid-head" aria-hidden="true">
+        <span class="col-no">段号</span>
+        <span class="col-status">状态</span>
+        <span class="col-source">原文 <small>只读</small></span>
+        <span class="col-target">译文 <small>可编辑</small></span>
+      </div>
+      <div id="segments" class="segments" role="list" aria-label="翻译段落"><div class="empty-state">正在加载文稿…</div></div>
+      <p class="filter-note" id="filter-note" hidden></p>
+    </section>
+<div id="editor-splitter" class="pane-separator" role="separator" tabindex="0" aria-label="调整编辑区与资源区高度" aria-orientation="horizontal" aria-controls="editor-pane resource-dock" title="拖动或使用方向键调整；双击或 Enter 重置"></div>
+<div class="resource-dock" id="resource-dock">
+<section class="sidebar-section details-pane" id="details-pane" aria-labelledby="tab-tm">
+        <div class="detail-tabs" role="tablist" aria-label="段落资源">
+          <button id="tab-tm" role="tab" aria-selected="true" aria-controls="panel-tm" data-detail="tm">记忆库</button>
+          <button id="tab-notes" role="tab" aria-selected="false" aria-controls="panel-notes" data-detail="notes" tabindex="-1">备注</button>
+          <button id="tab-history" role="tab" aria-selected="false" aria-controls="panel-history" data-detail="history" tabindex="-1">段落历史</button>
+          <span id="details-segment" class="detail-context">未选择段落</span>
+        </div>
+        <div class="side-body resource-panel" id="panel-tm" role="tabpanel" aria-labelledby="tab-tm">
+          <section id="panel-search" class="project-concordance" aria-label="项目内检索">
+        <div class="panel-pad">
+          <label class="field-label" for="concordance-input">项目内检索</label>
+          <input id="concordance-input" type="search" placeholder="输入词或句子，查找全篇出现位置" autocomplete="off">
+          <p class="field-hint">只检索本文稿的原文与译文，不包含翻译记忆库或术语库。</p>
+        </div>
+        <p class="panel-count" id="concordance-count">输入关键词后显示命中位置。</p>
+        <div class="concordance" id="concordance-results"></div>
+          </section>
+        </div>
+        <div id="panel-notes" class="side-body detail-body" role="tabpanel" aria-labelledby="tab-notes" hidden>
+          <label for="segment-note">当前段落备注 · 手动保存</label>
+          <textarea id="segment-note" maxlength="5000" rows="3" placeholder="记录译法依据或待核实的问题…" disabled></textarea>
+          <div class="note-actions"><button id="save-note" class="button button-dark" disabled>保存备注</button><span id="note-status" role="status" aria-live="polite">选择段落后可添加备注。</span></div>
+        </div>
+
+        <div id="panel-history" class="side-body detail-body" role="tabpanel" aria-labelledby="tab-history" hidden>
+          <p class="field-hint">现有撤销历史（最近修改在前）。撤销后对应记录移除；不含时间戳，不是完整审计记录。</p>
+          <div id="segment-history"></div>
+        </div>
+      </section>
+<div id="resource-splitter" class="pane-separator" role="separator" tabindex="0" aria-label="调整记忆库与术语宽度" aria-orientation="vertical" aria-controls="details-pane terminology-pane" title="拖动或使用方向键调整；双击或 Enter 重置"></div>
+<section class="sidebar-section terminology-pane" id="terminology-pane" aria-labelledby="heading-terms">
+        <h2 class="section-heading" id="heading-terms"><span>术语</span><small>Terminology</small></h2>
+        <div class="side-body resource-panel" id="panel-terms"></div>
+      </section>
+</div>
+</div>
+<div id="discussion-splitter" class="pane-separator" role="separator" tabindex="0" aria-label="调整编辑区与讨论宽度" aria-orientation="vertical" aria-controls="editor-column discussion-pane" title="拖动或使用方向键调整；双击或 Enter 重置"></div>
+<section class="sidebar-section discussion-section" id="discussion-pane" aria-labelledby="heading-chat">
+        <h2 class="section-heading" id="heading-chat"><span>段落讨论</span><small>Discussion</small></h2>
+        <div class="side-body" id="panel-chat">
+        <div class="context-strip">
+          <span class="context-label">当前段落</span>
+          <strong id="context-number">未选择段落</strong>
+          <p id="context-source">选择段落后可以讨论译法。</p>
+        </div>
+        <div class="conversation" id="conversation" role="log" aria-live="polite" aria-label="当前段落的对话">
+          <div class="chat-empty"><span class="chat-glyph" aria-hidden="true">“</span><p>从一个问题开始。</p><small>聊聊语气、原意，或更自然的说法。</small></div>
+        </div>
+        <div class="chat-quick-actions" role="group" aria-label="段落讨论快捷提问">
+          <button type="button" class="button button-quiet" data-chat-action="collocation">检查搭配</button>
+          <button type="button" class="button button-quiet" data-chat-action="plain">简明语言</button>
+          <button type="button" class="button button-quiet" data-chat-action="ambiguity">检查歧义</button>
+        </div>
+        <form class="chat-form" id="chat-form">
+          <label for="chat-input">讨论这一段</label>
+          <div class="chat-input-wrap">
+            <textarea id="chat-input" rows="2" placeholder="怎样表达更自然？" disabled></textarea>
+            <button id="chat-send" type="submit" aria-label="发送消息" disabled>↑</button>
+          </div>
+          <small>Codex Agent · 独立段落对话 · 回车发送</small>
+        </form>
+        </div>
+      </section>
+  </main>
+
+  <footer class="statusbar">
+    <span class="sb-item" id="status-segment">第 0 段 / 共 0 段</span>
+    <span class="state-pill st-empty" id="status-state">未开始</span>
+    <span class="sb-progress">
+      <span class="sb-track" role="progressbar" id="progress-bar" aria-label="翻译进度" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" title="浅色为已译，深色为已确认"><span id="progress-fill"></span><span id="progress-confirmed"></span></span>
+      <span class="sb-percent" id="progress-percent">0%</span>
+    </span>
+    <span class="sb-item" id="progress-label">已译 0% · 已确认 0%</span>
+    <span class="sb-item" id="status-counts">未开始 0 · 已编辑 0 · 已确认 0</span>
+    <span class="sb-item" id="status-words">译文 0 词 · 0 字符</span>
+    <span class="sb-spacer"></span>
+    <span class="sb-item sb-hint" id="status-hint">⌘/⌃ + ⏎ 确认并跳下一段 · Alt + ↑ ↓ 换段</span>
+  </footer>
+</div>
+
+<dialog id="import-dialog" class="dialog" aria-labelledby="import-title">
+  <form id="import-form" class="dialog-form">
+    <div class="dialog-top"><span class="eyebrow">新建文稿</span><button type="button" class="icon-button" id="import-close" aria-label="关闭导入窗口">×</button></div>
+    <h2 id="import-title">导入原文</h2>
+    <p>每个非空行会成为一段。导入后将替换当前文稿。</p>
+    <label for="import-title-input">文稿标题</label>
+    <input id="import-title-input" name="title" placeholder="未命名文稿" maxlength="160">
+    <label for="import-text">原文</label>
+    <textarea id="import-text" name="source" rows="10" placeholder="粘贴原文，每行一段…" required></textarea>
+    <div class="dialog-actions">
+      <button type="button" class="button button-quiet" id="import-cancel">取消</button>
+      <button type="submit" class="button button-dark" id="import-submit">导入文稿</button>
+    </div>
+  </form>
+</dialog>
+
+<dialog id="shortcut-dialog" class="dialog" aria-labelledby="shortcut-title">
+  <div class="dialog-form">
+    <div class="dialog-top"><span class="eyebrow">键盘操作</span><button type="button" class="icon-button" id="shortcut-close" aria-label="关闭快捷键窗口">×</button></div>
+    <h2 id="shortcut-title">快捷键</h2>
+    <p>沿用桌面 CAT 工具的确认与换段习惯，按本机键位可用 ⌘ 或 ⌃。</p>
+    <table class="shortcut-table">
+      <tbody>
+        <tr><th><kbd>⌘/⌃</kbd> + <kbd>⏎</kbd></th><td>确认当前译文，并跳到下一段</td></tr>
+        <tr><th><kbd>⌘/⌃</kbd> + <kbd>⇧</kbd> + <kbd>⏎</kbd></th><td>确认当前译文，但停在原段落</td></tr>
+        <tr><th><kbd>Alt</kbd> + <kbd>↑</kbd> / <kbd>↓</kbd></th><td>在译文单元格内切换上／下一段</td></tr>
+        <tr><th><kbd>↑</kbd> / <kbd>↓</kbd></th><td>在网格上移动当前段落</td></tr>
+        <tr><th><kbd>PgUp</kbd> / <kbd>PgDn</kbd></th><td>向上／向下翻一屏</td></tr>
+        <tr><th><kbd>⌘/⌃</kbd> + <kbd>A</kbd></th><td>选中当前段落的全部译文</td></tr>
+        <tr><th><kbd>Tab</kbd> / <kbd>⇧</kbd> + <kbd>Tab</kbd></th><td>在译文单元格内跳到下一段／上一段</td></tr>
+        <tr><th><kbd>⌘/⌃</kbd> + <kbd>⇧</kbd> + <kbd>C</kbd></th><td>把原文填入当前段译文</td></tr>
+        <tr><th><kbd>⌘/⌃</kbd> + <kbd>⇧</kbd> + <kbd>⌫</kbd></th><td>清空当前段译文</td></tr>
+        <tr><th><kbd>Esc</kbd></th><td>放弃本段未保存的编辑</td></tr>
+        <tr><th><kbd>⏎</kbd></th><td>在网格上进入当前段落的译文</td></tr>
+      </tbody>
+    </table>
+    <p class="dialog-note">在段号或原文上右键可以打开段落操作菜单：复制原文到译文、清空译文、确认本段、撤销修改、同步到相同原文、在检索中查找。译文在停止输入约 0.7 秒后自动保存；关闭页面不会丢失已保存内容。</p>
+    <div class="dialog-actions"><button type="button" class="button button-dark" id="shortcut-done">知道了</button></div>
+  </div>
+</dialog>
+
+<div class="row-menu export-menu" id="export-menu" role="menu" aria-label="导出译稿" hidden>
+  <p class="menu-group">单语译文</p>
+  <a class="row-menu-item" role="menuitem" href="/api/export.docx?mode=target" download>译文 · Word（DOCX）</a>
+  <a class="row-menu-item" role="menuitem" href="/api/export.md?mode=target" download>译文 · Markdown</a>
+  <p class="menu-group">中英双语对照</p>
+  <a class="row-menu-item" role="menuitem" href="/api/export.docx?mode=stacked" download>上下对照 · Word（DOCX）</a>
+  <a class="row-menu-item" role="menuitem" href="/api/export.md?mode=stacked" download>上下对照 · Markdown</a>
+  <a class="row-menu-item" role="menuitem" href="/api/export.docx?mode=table" download>左右表格对照 · Word（DOCX）</a>
+  <a class="row-menu-item" role="menuitem" href="/api/export.html?mode=table" download>左右表格对照 · HTML（可打印）</a>
+  <p class="menu-note">Word 与 HTML 默认中文宋体、西文 Arial。Markdown 不保留字体。</p>
+</div>
+
+<div class="row-menu" id="row-menu" role="menu" aria-label="段落操作" hidden>
+  <button class="row-menu-item" type="button" role="menuitem" data-action="copy-source">复制原文到译文</button>
+  <button class="row-menu-item" type="button" role="menuitem" data-action="clear">清空译文</button>
+  <button class="row-menu-item" type="button" role="menuitem" data-action="confirm">确认本段</button>
+  <button class="row-menu-item" type="button" role="menuitem" data-action="undo">撤销修改</button>
+  <button class="row-menu-item" type="button" role="menuitem" data-action="sync">同步到相同原文</button>
+  <button class="row-menu-item" type="button" role="menuitem" data-action="find">在检索中查找</button>
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+</body>
+</html>

@@ -1,0 +1,17 @@
+# ATA-derived category map and source boundaries
+
+Source of category descriptions: American Translators Association, “Explanation of Error Categories,” version 2022, https://www.atanet.org/certification/how-the-exam-is-graded/error-categories/ . Source of codes and examination scoring scheme: “Framework for Standardized Error Marking,” version 2023, local `Framework_2023.pdf`. Severity logic: “Flowchart for Error Point Decisions,” 2020, local `flowchart-2020.pdf`. Into-English examples: “Into-English Grading Standards,” version 2025, local `Into-English-Grading-Standards-2025.pdf`, pp. 1–67. Consult the original ATA documents for exact section/page citations. This reference records the source versions; no private local files are part of the distributed package.
+
+| Primary family | Useful codes | Distinguishing question |
+| --- | --- | --- |
+| Meaning transfer | A addition; O omission; T terminology; FA false friend; V verb form; AMB ambiguity; COH cohesion; F faithfulness; L literalness; MU misunderstanding; IND indecision; UNF unfinished; OTH-MT other | Does a comparison with the source show lost, extra, obscured, or changed meaning or stance? |
+| Target language mechanics | G grammar; SYN syntax; WF/PS word form/part of speech; SP/CH spelling/character; C capitalization; D diacritics; P punctuation; OTH-ME other | Is a rule of the target language broken, without a demonstrated change of meaning? |
+| Writing quality | U usage; TT text type; R register; ST style | Is the text grammatical but inappropriate or awkward for reader, purpose or convention? |
+
+Decision cues from ATA explanation, Sections 1–3: incorrect punctuation that changes meaning belongs to meaning transfer; a literal phrase that only sounds awkward belongs to U; an incorrect collocation that changes meaning belongs to transfer; acceptable explicitation or implicitation is not automatically A or O. Verb form is labeled V on the 2023 framework and VF in the 2022 web explanation; here use V consistently for a grammatically possible form whose meaning differs from the source; incorrect inflection is G. TT/R/ST needs a translation brief or clear context. For each issue, identify its effect and give one primary code. Some codes on the 2023 one-page framework appear in compressed visual layout; use the detailed 2022 explanations to settle classification.
+
+The 2023 framework's numeric point values, quality points, 18-point exam failure threshold, and 40+ stopping convention belong to ATA certification exams with specified passages and graders; do not compute those for learner drafts. The 2020 flowchart distinguishes source-comparison transfer problems from target-only mechanics/style, then asks how the difference affects intelligibility and intended use. Use those questions for qualitative educational priority only.
+
+The 2025 Into-English Grading Standards say translation instructions govern medium, audience and purpose (p. 1). They are U.S. English exam standards, not universal English style rules; gray-area renderings should be treated with leniency (p. 1). For instance, the exam penalizes non-U.S. spelling (p. 37), but a British English client brief can require it. Refer to a page only after reading the original page for the actual claim.
+
+The 2024 NAATI Certified Translator Rubrics PDF in the source directory evaluates non-specialized translation and revision with band descriptors; it is a different credential and measurement system. Keep it out of ATA-based diagnosis unless a separate comparison is requested.

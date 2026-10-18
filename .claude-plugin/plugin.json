@@ -1,0 +1,22 @@
+{
+  "name": "tis",
+  "description": "口笔译学习与执业工具箱：实践、诊断、查证、简明语言、客户业务与更新。",
+  "skills": [
+    "./skills/tis",
+    "./skills/tis-translation-practice",
+    "./skills/tis-translation-diagnosis",
+    "./skills/tis-real-english",
+    "./skills/tis-usage-evidence",
+    "./skills/tis-plain-language",
+    "./skills/tis-update",
+    "./skills/tis-speaking-practice",
+    "./skills/tis-client-service"
+  ],
+  "version": "0.9.2",
+  "homepage": "https://github.com/yileme/tiskill",
+  "repository": "https://github.com/yileme/tiskill",
+  "author": {
+    "name": "译了么",
+    "url": "https://xhslink.cn/o/3UlkBC8GKzqv"
+  }
+}

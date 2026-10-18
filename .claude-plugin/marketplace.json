@@ -1,0 +1,25 @@
+{
+  "name": "tiskill-skills",
+  "owner": {
+    "name": "yileme"
+  },
+  "metadata": {
+    "description": "口笔译学习与执业工具箱",
+    "version": "0.9.2"
+  },
+  "plugins": [
+    {
+      "name": "tis",
+      "description": "口笔译学习与执业工具箱，包含全部 9 个 Skills",
+      "source": "./",
+      "strict": true,
+      "version": "0.9.2",
+      "category": "translation-toolkit",
+      "keywords": [
+        "translation",
+        "interpreting",
+        "router"
+      ]
+    }
+  ]
+}
