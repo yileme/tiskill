@@ -12,11 +12,11 @@
 
 此 Git 仓库是技能唯一开发真源，`skills/<name>/SKILL.md` 为公开安装内容。Ekko Profile 目录是受控安装副本，不在那里开发。`tools/sync_installed.py` 用清单记录最近一次托管内容的哈希，并在本机 `~/.tiskill/source.json` 登记仓库位置；修改过的安装副本不会被覆盖。新增子技能时同步更新 README、插件清单、同步脚本中的允许列表和验证。
 
-本地 Git 提交记录版本变动。远端尚未创建；远端地址和公开许可证确定之后再创建 GitHub 仓库、推送、创建 tag 或 Release，并在隔离环境测试安装。远端发布后设置 `TIS_UPDATE_URL` 为该仓库的 raw `UPDATE.json` 地址；不在脚本里猜测仓库已经公开。不要提交学员原稿、客户文件、版权 PDF、本地路径或凭据。
+本地 Git 提交记录版本变动。公开仓库 yileme/tiskill 已发布独立审计快照（0.9.2）；其历史与本开发仓库分离，开发仓库没有配置 remote。不得把开发历史直接推送到公开仓库。发布需单独授权并从审计分发快照进行；0.11.0 在用户授权后从公开 main 追加审计快照，同时包含 0.10.0；不创建 tag 或 GitHub Release。隔离发布目录为 `.ekko-tmp/public-0.11.0`，其 origin 指向 `https://github.com/yileme/tiskill.git`，公开基线为 `095489cdf6f9bf937bc6cc80eaa4b21830cf4e56`。开发仓库仍不配置 remote。远端发布后设置 `TIS_UPDATE_URL` 为该仓库的 raw `UPDATE.json` 地址；不在脚本里猜测仓库已经公开。不要提交学员原稿、客户文件、版权 PDF、本地路径或凭据。
 
 0.7.0 增加独立证据卡、自评练习历史和有边界的听说 Skill；验收见 evidence-acceptance.md。
 
-共享表达规则以 `docs/voice-and-interaction.md` 为真源；编辑后同步九个 `skills/*/references/voice-and-interaction.md`，`tools/validate.py` 检查一致性。独立安装不依赖仓库外路径；CAT 从仓库真源加载。0.7.2 人工质量检查见 `voice-acceptance.md`，未执行不能当作通过。
+共享表达规则以 `docs/voice-and-interaction.md` 为真源；编辑后同步十个 `skills/*/references/voice-and-interaction.md`，`tools/validate.py` 检查一致性。独立安装不依赖仓库外路径；CAT 从仓库真源加载。0.7.2 人工质量检查见 `voice-acceptance.md`，未执行不能当作通过。
 
 技能更名的托管迁移规则与旧标识退役说明见 [0.7.3](changes-0.7.3.md)。归档位于同步清单旁的 `retired-skills/`，不位于 Profile 技能目录。
 
@@ -27,3 +27,7 @@
 0.9.1 强化 EU 来源参考；运行 `tools/validate_eu_reading.py` 核对四份逐页笔记的完整唯一范围、元数据和引用链接。人工任务见 eu-guides-acceptance.md，不能把结构验证当成效果试验。
 
 0.9.2 增加 EU-TIPS 的 17 页，累计五份 536 页；同一阅读验证器检查新增身份与两个独立技能参考的一致性，CI 运行该检查。
+
+0.10.0 双语证据：运行 `python3 -m unittest tools.test_bilingual tools.test_library`；实查状态见 bilingual-acceptance.md。未发布时 UPDATE.json 不含尚未上线的 details_url；发布时再补公开变更链接。
+
+0.11.0 新增 `tis-inclusive-language`，共十项技能；来源与视觉核对范围随技能分发，八项人工验收见 [inclusive-language-acceptance.md](inclusive-language-acceptance.md)。运行既有 metadata/update 检查及托管 check/apply/check；不修改 CAT 或私有知识目录。

@@ -36,3 +36,5 @@ Work on a source text and a learner's target text, ideally with the translation 
 原始讲评与累积记录的格式以 `references/report-and-records.md` 为准。用户只要诊断时不要强制问存哪里；完整报告结尾可用一句话提供“可保存为本地 Markdown + 错误表，或写到飞书/腾讯文档”，并在用户选择后执行。
 
 When using the local ATA materials, read the original documents as needed and cite their exact section/page; do not reproduce large passages in output or package the copyrighted PDFs into a distributed skill. The reference file records the source versions and decision distinctions. NAATI rubrics in the same collection are a separate assessment system: do not combine their bands or pass requirements with ATA codes.
+
+用户明确询问包容性语言、性别、代词或身份表达，或本次出现相关局部问题时，可读取 `tis-inclusive-language`；只交接该问题，区分原文立场、译文增添与客户偏好，不自动全文扫描或强制串联。有条件建议与待核实项不计为翻译错误。

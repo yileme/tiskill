@@ -19,5 +19,5 @@ jobs:
       - run: python3 tools/test_update.py
       - run: python3 tools/test_diagnosis_save.py
       - run: python3 -m unittest discover -s cat -p 'test_*.py'
-      - run: python3 -m unittest tools.test_library
+      - run: python3 -m unittest tools.test_library tools.test_bilingual
       - run: python3 tools/test_business.py

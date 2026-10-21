@@ -33,6 +33,16 @@ with tempfile.TemporaryDirectory() as temp:
     args = [sys.executable, str(sync), "--target", str(target), "--state", str(state)]
     subprocess.run(args + ["--apply"], check=True, capture_output=True)
     subprocess.run(args + ["--check"], check=True, capture_output=True)
+    # The newly registered skill is installed and protected like existing skills.
+    new_skill = target / "tis-inclusive-language/SKILL.md"
+    assert new_skill.read_bytes() == (ROOT / "skills/tis-inclusive-language/SKILL.md").read_bytes()
+    original = new_skill.read_bytes()
+    new_skill.write_text(new_skill.read_text() + "\n# local inclusive preference\n")
+    before = {str(p.relative_to(target)): p.read_bytes() for p in target.rglob("*") if p.is_file()}
+    blocked_new = subprocess.run(args + ["--apply"], text=True, capture_output=True)
+    assert blocked_new.returncode == 2 and "tis-inclusive-language/SKILL.md" in blocked_new.stdout
+    assert before == {str(p.relative_to(target)): p.read_bytes() for p in target.rglob("*") if p.is_file()}
+    new_skill.write_bytes(original)
     modified = target / "tis/SKILL.md"
     modified.write_text(modified.read_text() + "\n# user change\n")
     blocked = subprocess.run(args + ["--apply"], text=True, capture_output=True)

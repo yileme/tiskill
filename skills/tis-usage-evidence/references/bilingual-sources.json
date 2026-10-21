@@ -1,0 +1,19 @@
+{
+  "yizhi": {
+    "host": "yizhiyoudao.kuaizhan.com",
+    "home": "https://yizhiyoudao.kuaizhan.com/",
+    "role": "discovery aggregator; publisher identity unverified"
+  },
+  "reciyi": {
+    "host": "reciyi.com",
+    "home": "https://www.reciyi.com/",
+    "search": "https://www.reciyi.com/search/",
+    "about": "https://www.reciyi.com/about/?c=about",
+    "role": "personal volunteer-maintained curated alignment; not original publisher"
+  },
+  "linguee": {
+    "host": "linguee.com",
+    "home": "https://www.linguee.com/",
+    "role": "dictionary plus external sources (not reviewed)"
+  }
+}

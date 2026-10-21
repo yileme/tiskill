@@ -7,7 +7,7 @@
 | 词义及语域 | [Oxford Learner’s](https://www.oxfordlearnersdictionaries.com/)、[Cambridge](https://dictionary.cambridge.org/)、[Longman](https://www.ldoceonline.com/) | 目标义项原话、语域/地区标注、真实例句；单个词条未收录不等于不存在。 |
 | 搭配与可用性 | 词典搭配例句、[Linggle](https://search.linggle.com/)、[Google Books Ngram](https://books.google.com/ngrams/) | 比较相同语法框架和同义范围中的搭配；读计数口径。Linggle 可用 `_` 查询未知位置；Ngram 比较短语时保持地区、年代、大小写一致。 |
 | 真实例句与搭配发现 | [SkELL](https://skell.sketchengine.eu/) Examples（concordance）与 Word Sketch | Examples 看词或短语所在句；Word Sketch 按语法关系找搭配，再点击搭配核对例句。核对词性、义项及主宾/修饰关系，不能凭同句共现判定搭配。 |
-| 译法候选发现 | [Linguee](https://www.linguee.com/) 双语词典与对齐例句 + 目标语词典/语料 | 核对原始来源链接、出版者及来源质量、两侧完整语境、领域、译向、义项及用途是否匹配；平行句是参照，不是标准答案。 |
+| 译法候选发现 | [译之有道](https://yizhiyoudao.kuaizhan.com/)、[热词译](https://www.reciyi.com/)、[Linguee](https://www.linguee.com/) 双语词典与对齐例句 + 目标语词典/语料 | 核对原始来源链接、出版者及来源质量、两侧完整语境、领域、译向、义项及用途是否匹配；平行句是参照，不是标准答案。 |
 | 专业与学术语域 | 领域官方文件、客户术语表、[OpenAlex](https://openalex.org/)、[PubMed](https://pubmed.ncbi.nlm.nih.gov/) | 核实术语由谁使用、是否同领域。OpenAlex 对含冠词/介词短语的计数可能退化成词袋；PubMed 要核对查询是否保留完整短语；不能直接拿粗略命中数证明搭配正确。 |
 
 可先用已安装的浏览器读取词典页面与语料页面；必要时使用适用的 CLI 工具。`scripts/ngram.mjs "candidate A,candidate B"` 可以比较 1900–2019 图书语料近十年比例，必要时加 `--corpus en-US-2019` 或 `en-GB-2019`。若命令失败或语料不能覆盖目标场景，换一个合适来源或标注未能查证，不凭模型语感补齐。
@@ -38,3 +38,5 @@
 核对说话场景、角色、体裁、地区及语域；影视台词和演讲不是所有日常场景的代表。字幕只支持文字层证据；只有实际听取的音频才支持声音观察。用户说自己已听过，应写“用户确认”，不声称 Agent 已听。来源原始链接或完整上下文不可见时保留限制。口语频率不能由少量返回片段推算。用于听辨、跟读、复述时路由至 tis-speaking-practice。
 
 已逐页读过的 EU 四份指南及概念/用法证据分工见 [EU 来源](eu-guides.md)；它们是版次限定的参考，不代替当次领域与用法查证。
+
+双语原文发现、Google/Bing 精确 site 检索、访问状态与出处去重规则见 [双语检索](bilingual-retrieval.md)。

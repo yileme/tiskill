@@ -5,15 +5,15 @@
   },
   "metadata": {
     "description": "口笔译学习与执业工具箱",
-    "version": "0.9.2"
+    "version": "0.11.0"
   },
   "plugins": [
     {
       "name": "tis",
-      "description": "口笔译学习与执业工具箱，包含全部 9 个 Skills",
+      "description": "口笔译学习与执业工具箱，包含全部 10 个 Skills",
       "source": "./",
       "strict": true,
-      "version": "0.9.2",
+      "version": "0.11.0",
       "category": "translation-toolkit",
       "keywords": [
         "translation",

@@ -1,6 +1,6 @@
 {
   "name": "tis",
-  "description": "口笔译学习与执业工具箱：实践、诊断、查证、简明语言、客户业务与更新。",
+  "description": "口笔译学习与执业工具箱：实践、诊断、查证、简明语言、包容性语言、客户业务与更新。",
   "skills": [
     "./skills/tis",
     "./skills/tis-translation-practice",
@@ -10,9 +10,10 @@
     "./skills/tis-plain-language",
     "./skills/tis-update",
     "./skills/tis-speaking-practice",
-    "./skills/tis-client-service"
+    "./skills/tis-client-service",
+    "./skills/tis-inclusive-language"
   ],
-  "version": "0.9.2",
+  "version": "0.11.0",
   "homepage": "https://github.com/yileme/tiskill",
   "repository": "https://github.com/yileme/tiskill",
   "author": {

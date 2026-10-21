@@ -5,13 +5,15 @@ from pathlib import Path
 import re
 
 ROOT = Path(__file__).resolve().parents[1]
-NAMES = ("tis", "tis-translation-practice", "tis-translation-diagnosis", "tis-real-english", "tis-usage-evidence", "tis-plain-language", "tis-speaking-practice", "tis-update", "tis-client-service")
+NAMES = ("tis", "tis-translation-practice", "tis-translation-diagnosis", "tis-real-english", "tis-usage-evidence", "tis-plain-language", "tis-speaking-practice", "tis-update", "tis-client-service", "tis-inclusive-language")
 VERSION = (ROOT / "VERSION").read_text().strip()
 assert re.fullmatch(r"(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)", VERSION)
 update = json.loads((ROOT / "UPDATE.json").read_text())
 market = json.loads((ROOT / ".claude-plugin/marketplace.json").read_text())
 plugin = json.loads((ROOT / ".claude-plugin/plugin.json").read_text())
-assert update["version"] == market["metadata"]["version"] == VERSION
+assert update["version"] == market["metadata"]["version"] == plugin["version"] == VERSION
+assert len(NAMES) == 10
+assert {p.name for p in (ROOT / "skills").iterdir() if p.is_dir()} == set(NAMES)
 assert 1 <= len(update["notice"]) <= 100
 assert len(market["plugins"]) == 1
 assert market["plugins"][0]["name"] == plugin["name"] == "tis"
@@ -52,4 +54,29 @@ for path in [*plain.rglob("*.md"), ROOT / "README.md", ROOT / "docs/changes-0.9.
         if "://" not in target and not target.startswith("#"):
             assert (path.parent / target.split("#", 1)[0]).is_file(), (path, target)
 assert not list(plain.rglob("*.pdf")), "Do not bundle source PDFs"
+# Inclusive-language source identity, verified locators and standalone references.
+inclusive = ROOT / "skills/tis-inclusive-language"
+records = json.loads((inclusive / "references/source-metadata.json").read_text())["sources"]
+assert {s["id"] for s in records} == {"UN-GENDER", "APA-ILG-2023"}
+for source in records:
+    assert source["id"] in (inclusive / "references/sources.md").read_text()
+    assert source["url"].startswith("https://")
+    for check in source["visual_checks"]:
+        assert 1 <= check["pdf_page"] <= source["pdf_pages"]
+        assert check["printed_page"] > 0
+un, apa = records
+assert un["date"] is None and un["date_status"]
+assert apa["date"] == "2023" and apa["pdf_pages"] == 51
+assert len({c["pdf_page"] for c in apa["visual_checks"]}) == len(apa["visual_checks"])
+for path in [*inclusive.rglob("*.md"), ROOT / "docs/changes-0.11.0.md"]:
+    for target in re.findall(r"\[[^\]]*\]\(([^)]+)\)", path.read_text()):
+        if "://" not in target and not target.startswith("#"):
+            assert (path.parent / target.split("#", 1)[0]).is_file(), (path, target)
+for path in inclusive.rglob("*"):
+    if path.is_file():
+        assert path.suffix in (".md", ".json"), path
+        assert "/Users/" not in path.read_text() and "MinerU/" not in path.read_text(), path
+readme = (ROOT / "README.md").read_text()
+assert f"[{VERSION}](VERSION)" in readme and "全部 10 项技能" in readme
+assert all(f"skills/{name}/SKILL.md" in readme for name in NAMES)
 print(f"tiskill v{VERSION}: metadata, structure and source boundaries valid")

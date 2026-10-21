@@ -23,3 +23,17 @@ The source opens read-only using the archived application schema (`tools/legacy_
 0.7.0 has only current cards and attempts, no general card edit-history table. Migration cannot recover absent versions/deleted cards except the snapshots already in attempts. Legacy verification is preserved as a historical claim, not upgraded or newly certified. Full raw rows permit exact recovery. Partial migrations can resume; they are not cross-file transactions. Empty input produces zero records, never examples.
 
 Run `python3 -m unittest tools.test_library` for disposable save/migration regressions. CAT's former evidence endpoints and script return 404.
+
+## Optional bilingual evidence payload (0.10.0)
+
+No migration or new required fields. Existing records remain valid. For evidence/expression, optional `bilingual` is preserved verbatim in the full JSON (unknown metadata contract); it is a documented convention, not an enforced semantic validator. Keep top-level `quotation`, `url`, `context`, `explanation`, `query`, `accessedAt`, `limitations` usable by older readers. Use:
+
+- `sourceText`, `targetText`: exact complete short quotations, never assistant rewrites.
+- `sourceLanguage`, `targetLanguage`, `translationDirection` (zh-en/en-zh/unknown), `directionBasis`.
+- `aggregator`: `{name, url, publishedAt}`; `original`: `{publisher, sourceUrl, targetUrl, documentId, publishedAt, sourceLine, locator}`. Unknown values null; preserve sourceLine verbatim. All supplied URLs must follow the existing credential-free HTTP(S) rule (nested metadata is not automatically validated).
+- `originalVerification`: unverified/verified; `originalVerificationBasis`; `reading`: `{aggregator, original, method, accessedAt}` describes actual access, independently of the top-level user-confirmed verification.
+- `alignment`: `{status, basis}`; `applicability`: `{domain, register, audience, judgment, limitations}`.
+- `retrieval`: list of `{url, query, method, status, relevantResults, retryAfter, accessedAt, limitation}`; use the states in bilingual-retrieval.md. `dedupeKey`: original document/version identity when known, otherwise unknown; copies are not independent evidence.
+- `assistantRewrite`: separate optional suggestion, never sourceText/targetText.
+
+A `text_read` retrieval/reading observation does not authorize a top-level `text_read` save. Keep `verification: unverified` unless the user actually confirms the evidence. CLI `--confirm` only authorizes saving. Save only on explicit request. Tests write real Markdown files in disposable libraries and verify exact pair/provenance preservation and immutable practice snapshots; fixtures are not external evidence or user notes.

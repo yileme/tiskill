@@ -1,5 +1,5 @@
 {
-  "version": "0.9.2",
-  "notice": "完整阅读17页Clear English译者指南，补充句法与隐藏条件检查，保留法律关系和源文信息",
-  "details_url": "https://github.com/yileme/tiskill/blob/main/docs/changes-0.9.2.md"
+  "version": "0.11.0",
+  "notice": "新增包容性语言审校：区分原文忠实、本人称谓与客户规范，按条件给最小修改",
+  "details_url": "https://github.com/yileme/tiskill/blob/main/docs/changes-0.11.0.md"
 }

@@ -1,19 +1,25 @@
 ---
 name: tis-usage-evidence
-description: 查证英译文词义、搭配、语域和译法，用可回溯的词典与语料证据支持翻译点评；用户直接问某个英语表达是否适用时也使用。
+description: 查证英译文词义、搭配、语域和译法，用可回溯的词典与语料证据支持翻译点评；用户说“找双语译例/回查译法”、需要从原文发现候选或问英文表达是否适用时也使用。
 metadata:
   keywords:
     - translation usage evidence
     - english collocation verification
     - translation wording verification
     - dictionary corpus citations
+    - bilingual examples
+    - translation candidate retrieval
 ---
 
 # tis-usage-evidence：英语译法查证
 
 先读 [反馈与对话](references/voice-and-interaction.md)，按其规则控制讲评篇幅和语气；下文的证据、任务与保存边界仍须遵守。
 
-从用户自有 `usage-evidence` v1.18.1 的翻译查证工作流提炼。目标是验证具体语境中的词义、词块搭配、译法、语域和地区变体。输入至少要有候选表达和所在句；中译英时连同原文、受众、用途和目标英语变体一起看。作为 `tis-translation-diagnosis` 的证据层使用，也可独立回答“这个译法能用吗”。
+从用户自有 `usage-evidence` v1.18.1 的翻译查证工作流提炼。目标是验证具体语境中的词义、词块搭配、译法、语域和地区变体。双语候选发现模式可从原文及用途开始；已有候选的用法查证至少要有候选表达和所在句；中译英时连同原文、受众、用途和目标英语变体一起看。作为 `tis-translation-diagnosis` 的证据层使用，也可独立回答“这个译法能用吗”。
+
+## 双语候选发现与回查
+
+用户说“找双语译例/回查译法”或尚无译法候选时，先读 [双语检索与溯源](references/bilingual-retrieval.md)，按译之有道、热词译、Linguee 的来源角色发现候选，再接下方目标语用法查证。原始出处核实、句对读取/对齐与本句适用性分别记录；遵守保密查询与反自动化停止边界。
 
 ## 查证流程
 
