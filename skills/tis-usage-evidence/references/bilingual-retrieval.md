@@ -14,7 +14,7 @@
 
 ## 精确检索与访问边界
 
-保留 Google `site:reciyi.com "人民当家作主"` 方法；其他两站替换为配置中的完整 host。只对参数值作 UTF-8 URL 编码（引号、中文、空格、&、+、#、% 均编码），不把未编码用户文本拼进 URL。`scripts/bilingual_queries.py --source reciyi` 从标准输入读公开/获准短语，离线生成 Google/Bing 查询、网站首页及 Linguee 查询 URL；只需 Python 3 标准库，运行前检查可用性。它不联网、不爬取、不调用 API、不打开浏览器、不记录日志；输出 `not_requested`，生成 URL 从不算已查证。输出含查询文本，勿发布到日志或共享工单。
+保留 Google `site:reciyi.com "人民当家作主"` 方法；其他两站替换为配置中的完整 host。只对参数值作 UTF-8 URL 编码（引号、中文、空格、&、+、#、% 均编码），不把未编码用户文本拼进 URL。`scripts/bilingual_queries.py --source reciyi` 从标准输入读公开/获准短语，离线生成 Google/Bing 查询、网站首页及 Linguee 查询 URL；只需 Python 3 标准库，运行前检查可用性。目标语语料另可用 `--source skell`，仅输出英语 Examples 入口，见 [SkELL](skell.md)。它不联网、不爬取、不调用 API、不打开浏览器、不记录日志；输出 `not_requested`，生成 URL 从不算已查证。输出含查询文本，勿发布到日志或共享工单。
 
 客户保密文本、未公开项目名称和可识别片段不得未经授权范围直接送搜索引擎或外部站点。采用已获准的公共术语，或在本地资料核对；不能假定“帮我翻译”授权公开全文搜索。程序不能自动判断文本是否保密。
 

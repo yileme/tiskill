@@ -46,6 +46,25 @@ class BilingualTest(unittest.TestCase):
         self.assertEqual(proc.returncode, 0, proc.stderr)
         self.assertEqual(json.loads(proc.stdout), queries.build("法", "linguee"))
 
+    def test_skell_fragment_and_cli(self):
+        for phrase in ["status quo", "中文 café", "law & order + 50% # / ? = 😀"]:
+            with patch("socket.socket", side_effect=AssertionError("network forbidden")):
+                result = queries.build(phrase, "skell")
+            url = urlsplit(result["skell"])
+            self.assertEqual((url.scheme, url.netloc, url.query), ("https", "skell.sketchengine.eu", ""))
+            self.assertEqual(parse_qs(url.fragment.split("?", 1)[1]),
+                             {"f": ["concordance"], "lang": ["en"], "query": [phrase]})
+            self.assertEqual(result["status"], "not_requested")
+            self.assertNotIn("google", result)
+            self.assertNotIn(" ", result["skell"])
+            self.assertNotIn("+", result["skell"])
+        proc = subprocess.run([sys.executable, str(SCRIPT), "--source", "skell"],
+                              input="status quo\n", text=True, capture_output=True)
+        self.assertEqual(proc.returncode, 0, proc.stderr)
+        self.assertEqual(json.loads(proc.stdout), queries.build("status quo", "skell"))
+        for phrase in ["", "x" * 501, "x\x00", 'a"b']:
+            with self.assertRaises(ValueError): queries.build(phrase, "skell")
+
     def test_actual_disposable_save_and_snapshot(self):
         pair = dict(sourceText="测试句。", targetText="A test sentence.", sourceLanguage="zh", targetLanguage="en",
                     translationDirection="unknown", directionBasis="Synthetic fixture only",

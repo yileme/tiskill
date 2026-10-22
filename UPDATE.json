@@ -1,5 +1,5 @@
 {
-  "version": "0.12.1",
-  "notice": "新增外刊阅读陪练与氢刻文件导出；完善词典依据、原文、语境解读和迁移练习，导入由用户完成",
-  "details_url": "https://github.com/yileme/tiskill/blob/main/docs/changes-0.12.1.md"
+  "version": "0.12.2",
+  "notice": "完善既有 SkELL 查证路径：短语例句、搭配关系、离线查询入口与证据边界",
+  "details_url": "https://github.com/yileme/tiskill/blob/main/docs/changes-0.12.2.md"
 }

@@ -14,6 +14,10 @@ HOSTS = {"yizhiyoudao.kuaizhan.com", "reciyi.com", "linguee.com"}
 def build(phrase, source="reciyi"):
     if not isinstance(phrase, str) or not phrase.strip() or len(phrase) > 500 or any(ord(c) < 32 or ord(c) == 127 for c in phrase) or '"' in phrase:
         raise ValueError("Use a nonempty phrase of at most 500 characters, without controls or double quotes")
+    if source == "skell":
+        return {"status": "not_requested", "source": "skell", "query": phrase,
+                "language": "en", "tab": "Examples", "site": "https://skell.sketchengine.eu/",
+                "skell": "https://skell.sketchengine.eu/#result?f=concordance&lang=en&query=" + quote(phrase, safe="")}
     if source not in SOURCES or SOURCES[source]["host"] not in HOSTS:
         raise ValueError("Unknown source")
     query = 'site:' + SOURCES[source]["host"] + ' "' + phrase + '"'
@@ -25,7 +29,7 @@ def build(phrase, source="reciyi"):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--source", choices=tuple(SOURCES), default="reciyi")
+    parser.add_argument("--source", choices=(*SOURCES, "skell"), default="reciyi")
     args = parser.parse_args()
     try:
         # A single final line ending from stdin is not part of the search phrase.
