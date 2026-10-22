@@ -1,5 +1,5 @@
 {
-  "version": "0.11.0",
-  "notice": "新增包容性语言审校：区分原文忠实、本人称谓与客户规范，按条件给最小修改",
-  "details_url": "https://github.com/yileme/tiskill/blob/main/docs/changes-0.11.0.md"
+  "version": "0.12.1",
+  "notice": "新增外刊阅读陪练与氢刻文件导出；完善词典依据、原文、语境解读和迁移练习，导入由用户完成",
+  "details_url": "https://github.com/yileme/tiskill/blob/main/docs/changes-0.12.1.md"
 }

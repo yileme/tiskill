@@ -5,14 +5,14 @@ from pathlib import Path
 import re
 
 ROOT = Path(__file__).resolve().parents[1]
-NAMES = ("tis", "tis-translation-practice", "tis-translation-diagnosis", "tis-real-english", "tis-usage-evidence", "tis-plain-language", "tis-speaking-practice", "tis-update", "tis-client-service", "tis-inclusive-language")
+NAMES = ("tis", "tis-translation-practice", "tis-translation-diagnosis", "tis-real-english", "tis-usage-evidence", "tis-plain-language", "tis-speaking-practice", "tis-update", "tis-client-service", "tis-inclusive-language", "tis-reading")
 VERSION = (ROOT / "VERSION").read_text().strip()
 assert re.fullmatch(r"(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)", VERSION)
 update = json.loads((ROOT / "UPDATE.json").read_text())
 market = json.loads((ROOT / ".claude-plugin/marketplace.json").read_text())
 plugin = json.loads((ROOT / ".claude-plugin/plugin.json").read_text())
 assert update["version"] == market["metadata"]["version"] == plugin["version"] == VERSION
-assert len(NAMES) == 10
+assert len(NAMES) == 11
 assert {p.name for p in (ROOT / "skills").iterdir() if p.is_dir()} == set(NAMES)
 assert 1 <= len(update["notice"]) <= 100
 assert len(market["plugins"]) == 1
@@ -77,6 +77,6 @@ for path in inclusive.rglob("*"):
         assert path.suffix in (".md", ".json"), path
         assert "/Users/" not in path.read_text() and "MinerU/" not in path.read_text(), path
 readme = (ROOT / "README.md").read_text()
-assert f"[{VERSION}](VERSION)" in readme and "全部 10 项技能" in readme
+assert f"[{VERSION}](VERSION)" in readme and "全部 11 项技能" in readme
 assert all(f"skills/{name}/SKILL.md" in readme for name in NAMES)
 print(f"tiskill v{VERSION}: metadata, structure and source boundaries valid")

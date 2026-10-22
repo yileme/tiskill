@@ -37,3 +37,7 @@ No migration or new required fields. Existing records remain valid. For evidence
 - `assistantRewrite`: separate optional suggestion, never sourceText/targetText.
 
 A `text_read` retrieval/reading observation does not authorize a top-level `text_read` save. Keep `verification: unverified` unless the user actually confirms the evidence. CLI `--confirm` only authorizes saving. Save only on explicit request. Tests write real Markdown files in disposable libraries and verify exact pair/provenance preservation and immutable practice snapshots; fixtures are not external evidence or user notes.
+
+## Local reading sources (0.12.0)
+
+Evidence/expression may supply `localSourceId` instead of URL. The source must already exist canonically in `07-阅读素材`; quotation must match its snapshot. `text_read` additionally requires that source has actual-reading/user-confirmation/checker proof and is not unchecked OCR, plus existing `userConfirmed`. The CLI captures `localSourceSnapshot`; input snapshots are rejected. Existing HTTP(S) contracts and practice `sourceId` are unchanged. See [reading contract](../skills/tis-reading/references/contract.md).

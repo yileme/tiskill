@@ -16,7 +16,7 @@
 
 0.7.0 增加独立证据卡、自评练习历史和有边界的听说 Skill；验收见 evidence-acceptance.md。
 
-共享表达规则以 `docs/voice-and-interaction.md` 为真源；编辑后同步十个 `skills/*/references/voice-and-interaction.md`，`tools/validate.py` 检查一致性。独立安装不依赖仓库外路径；CAT 从仓库真源加载。0.7.2 人工质量检查见 `voice-acceptance.md`，未执行不能当作通过。
+共享表达规则以 `docs/voice-and-interaction.md` 为真源；编辑后同步十一个 `skills/*/references/voice-and-interaction.md`，`tools/validate.py` 检查一致性。独立安装不依赖仓库外路径；CAT 从仓库真源加载。0.7.2 人工质量检查见 `voice-acceptance.md`，未执行不能当作通过。
 
 技能更名的托管迁移规则与旧标识退役说明见 [0.7.3](changes-0.7.3.md)。归档位于同步清单旁的 `retired-skills/`，不位于 Profile 技能目录。
 
@@ -31,3 +31,7 @@
 0.10.0 双语证据：运行 `python3 -m unittest tools.test_bilingual tools.test_library`；实查状态见 bilingual-acceptance.md。未发布时 UPDATE.json 不含尚未上线的 details_url；发布时再补公开变更链接。
 
 0.11.0 新增 `tis-inclusive-language`，共十项技能；来源与视觉核对范围随技能分发，八项人工验收见 [inclusive-language-acceptance.md](inclusive-language-acceptance.md)。运行既有 metadata/update 检查及托管 check/apply/check；不修改 CAT 或私有知识目录。
+
+Scoped local sync: `python3 tools/sync_installed.py --check --skill tis-reading --skill tis`, then `--apply` with the same selection. Other ledger entries and skills are preserved; conflicts within the selection still block all selected writes. Use when unrelated installed customizations must remain untouched.
+
+0.12.1 publishes the authorized 0.12.0 reading snapshot plus feedback/brand polish. Public history is appended from existing main through the GitHub Git API when Git transport is unavailable; non-force updates only. Local tickets are excluded from new publication changes.

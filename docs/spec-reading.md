@@ -1,0 +1,13 @@
+# Reading companion 0.12.0 — approved scope
+
+Local CLI and self-contained tis-reading Skill. No frontend, plugin development, CAT change, Qingk API, upload or publication. Existing library.json selects the existing vault folder. Public examples are synthetic; original books and private paths stay local.
+
+Import a selected Markdown/plain/web clipping range, selected PDF pages, or one EPUB spine chapter. Small text documents may use an explicit bounded-document option. Preserve original bytes, hash, revision, absolute local path, locator, extracted snapshot and paragraph block IDs. Extraction is unverified; text_read requires explicit actual-reading confirmation, a checker and no unchecked OCR. Never fabricate a URL. EPUB uses spine order, bounded ZIP reads, no extraction to disk, and rejects traversal/DTD/entities. Scans are deferred.
+
+07-阅读素材 holds immutable source and card revisions. Separate study attempts retain learner summaries (including 中译中/借英读中), selections, prompts, output, self-review and exact source snapshot in 03-练习复盘. Existing 01/02 remain the evidence/expression store. Default conversation selects three chunks and one pattern, flexibly. Stages imported/reading/selected/practising/review describe workflow, not mastery. No automatic correctness score or invented IPA/CEFR/frequency/etymology.
+
+Canonical local sources extend the old HTTP evidence contract without breaking it. Valid source ID, matching excerpt and verified canonical source are required for local text_read. Study/card inputs cannot inject snapshots. Cards have stable ID, revision, source/locator, type, question/answer/hint, draft/confirmed state, explicit user confirmation and optional due date. Exact collisions fail; revisions explicitly extend an existing card. Never merge unrelated senses.
+
+Exports are headerless regular (2 columns) and hint (3 columns) TSV/XLSX files. Strings stay literal; TSV internal whitespace is flattened. Drafts are excluded. Citations include only title, locator, ID. Atomic batch directory publication with its manifest is the export commit point: retries skip exact revisions; changed previously exported cards are reported, not included unless explicitly requested. Exported is not imported; manual import acknowledgement is a separate immutable record. No external import verification claim. XLSX limit 10 MB.
+
+Validation: isolated MD/PDF/EPUB fixtures, original hashes, XML/ZIP attacks, source proof guards, append-only attempts, collisions, strings/formulas/Unicode/TSV rows, retry and failure atomicity, next-day due queries, standalone installation, existing library/business/bilingual/update tests. Only minimal index/templates are authorized in the real vault.

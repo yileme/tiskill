@@ -4,3 +4,5 @@
 - Practice attempt: learner response and self-review, date, exercise type, source card ID and immutable snapshot. No automatic language or audio score.
 
 - Business brief: evidence-bearing confirmed/proposed/pending facts, exclusive scope pricing, explicit unknowns; production rather than pedagogy. Precontract draft never implies acceptance. Business knowledge and client projects live in configured Obsidian library, not CAT. See ADR 0003.
+
+- Reading source: bounded local immutable snapshot/hash/locator; extraction unverified. Local evidence may reference validated canonical localSourceId, not a fake URL. Reading stages do not imply mastery. Card export manifests are not import receipts.

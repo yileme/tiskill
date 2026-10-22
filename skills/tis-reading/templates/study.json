@@ -1,0 +1,8 @@
+{
+  "attempt_id": "replace-attempt-id",
+  "source_id": "replace-source-id",
+  "stage": "reading",
+  "summary": "Replace with learner original summary",
+  "response": "Replace with actual learner output",
+  "self_review": "Replace with learner self-review"
+}

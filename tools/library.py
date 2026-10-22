@@ -73,8 +73,12 @@ def validate(data):
     if data.get("url"):
         valid_url(data["url"])
     if state != "unverified":
-        if data.get("userConfirmed") is not True or not data.get("quotation") or not data.get("url"):
+        if data.get("userConfirmed") is not True or not data.get("quotation") or not (data.get("url") or data.get("localSourceId")):
             raise ValueError("Checked evidence requires actual quote, URL and explicit user confirmation")
+    if data.get("localSourceId") and state == "audio_checked":
+        raise ValueError("Local reading sources cannot establish audio verification")
+    if data.get("localSourceSnapshot") is not None:
+        raise ValueError("Local snapshots are captured, not accepted from input")
     if data.get("snapshot") is not None:
         raise ValueError("Snapshots are captured from saved sourceId, not accepted from input")
     if data["type"] == "practice" and state != "unverified":
@@ -153,6 +157,17 @@ def save(root, data, confirm=False):
     data = dict(validate(data))
     with locked(root):
         known = records(root)
+        if data.get("localSourceId"):
+            import importlib.util
+            script = Path(__file__).resolve().parents[1]/"skills/tis-reading/scripts/reading.py"
+            spec = importlib.util.spec_from_file_location("tis_reading", script)
+            reading = importlib.util.module_from_spec(spec); spec.loader.exec_module(reading)
+            _, local = reading.get_source(root, data["localSourceId"])
+            if not data.get("quotation") or data["quotation"] not in local["content"]:
+                raise ValueError("Local quotation must match canonical source")
+            if data.get("verification", "unverified") != "unverified" and (local["verification"] != "text_read" or local.get("ocr_unchecked")):
+                raise ValueError("Local source remains unverified")
+            data["localSourceSnapshot"] = local
         source = data.get("sourceId")
         if source and source not in known:
             raise ValueError("Unknown sourceId")

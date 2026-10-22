@@ -10,7 +10,7 @@ import sys
 import tempfile
 
 ROOT = Path(__file__).resolve().parents[1]
-NAMES = ("tis", "tis-translation-practice", "tis-translation-diagnosis", "tis-real-english", "tis-usage-evidence", "tis-plain-language", "tis-speaking-practice", "tis-update", "tis-client-service", "tis-inclusive-language")
+NAMES = ("tis", "tis-translation-practice", "tis-translation-diagnosis", "tis-real-english", "tis-usage-evidence", "tis-plain-language", "tis-speaking-practice", "tis-update", "tis-client-service", "tis-inclusive-language", "tis-reading")
 RENAMED = {"tis-english-naturalness": "tis-real-english"}
 DEFAULT_TARGET = Path.home() / ".hermes-web-ui/.ekko/skills/default/writing"
 # Recognized pre-repository managed copies created during initial prototype.
@@ -30,8 +30,11 @@ def package_files(base):
             for name in NAMES for p in (base / name).rglob("*") if p.is_file() and not p.name.startswith(".ekko-") and "__pycache__" not in p.parts and p.suffix != ".pyc"}
 
 
-def run(target, state, apply):
-    source = package_files(ROOT / "skills")
+def run(target, state, apply, names=None):
+    selected = tuple(names) if names else NAMES
+    if not set(selected) <= set(NAMES):
+        raise ValueError("Unknown skill selection")
+    source = {k:v for k,v in package_files(ROOT / "skills").items() if k.split("/",1)[0] in selected}
     if any(not (ROOT / "skills" / name / "SKILL.md").is_file() for name in NAMES):
         raise ValueError("source package incomplete")
     try:
@@ -44,6 +47,8 @@ def run(target, state, apply):
     conflicts, actions = [], []
     retirements = []
     for old in RENAMED:
+        if names and RENAMED[old] not in selected:
+            continue
         directory = target / old
         if not directory.exists() and not directory.is_symlink():
             continue
@@ -73,7 +78,7 @@ def run(target, state, apply):
             conflicts.append(key)
             continue
         actions.append((key, src, dst))
-    for name in NAMES:
+    for name in selected:
         directory = target / name
         if directory.is_symlink() or (directory.exists() and not directory.is_dir()):
             conflicts.append(name)
@@ -104,7 +109,8 @@ def run(target, state, apply):
         for key, src, dst in actions:
             dst.parent.mkdir(parents=True, exist_ok=True)
             shutil.copy2(src, dst)
-        updated = {k: digest(p) for k, p in source.items()}
+        updated = {k:v for k,v in ledger.items() if names and k.split("/",1)[0] not in selected}
+        updated.update({k: digest(p) for k, p in source.items()})
         state.parent.mkdir(parents=True, exist_ok=True)
         state.write_text(json.dumps(updated, ensure_ascii=False, indent=2) + "\n")
         source_config = state.parent / "source.json"
@@ -123,9 +129,10 @@ if __name__ == "__main__":
     mode.add_argument("--apply", action="store_true")
     parser.add_argument("--target", type=Path, default=Path(os.getenv("TIS_PROFILE_SKILLS", DEFAULT_TARGET)))
     parser.add_argument("--state", type=Path, default=Path(os.getenv("TIS_SYNC_STATE", Path.home() / ".tiskill/managed-files.json")))
+    parser.add_argument("--skill", action="append", choices=NAMES, help="Sync only named skills; preserve other ledger entries")
     args = parser.parse_args()
     try:
-        sys.exit(run(args.target, args.state, args.apply))
+        sys.exit(run(args.target, args.state, args.apply, args.skill))
     except (ValueError, OSError) as error:
         print(error, file=sys.stderr)
         sys.exit(2)
