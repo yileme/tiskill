@@ -10,7 +10,7 @@ import sys
 import tempfile
 
 ROOT = Path(__file__).resolve().parents[1]
-NAMES = ("tis", "tis-translation-practice", "tis-translation-diagnosis", "tis-real-english", "tis-usage-evidence", "tis-plain-language", "tis-speaking-practice", "tis-update", "tis-client-service", "tis-inclusive-language", "tis-reading")
+NAMES = ("tis", "tis-translation-practice", "tis-translation-diagnosis", "tis-real-english", "tis-usage-evidence", "tis-plain-language", "tis-speaking-practice", "tis-update", "tis-client-service", "tis-inclusive-language", "tis-reading", "tis-public-service-english")
 RENAMED = {"tis-english-naturalness": "tis-real-english"}
 DEFAULT_TARGET = Path.home() / ".hermes-web-ui/.ekko/skills/default/writing"
 # Recognized pre-repository managed copies created during initial prototype.

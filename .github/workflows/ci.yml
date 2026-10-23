@@ -16,6 +16,7 @@ jobs:
           python-version: "3.12"
       - run: python3 tools/validate.py
       - run: python3 tools/validate_eu_reading.py
+      - run: python3 -m unittest tools.test_public_service
       - run: python3 tools/test_update.py
       - run: python3 tools/test_diagnosis_save.py
       - run: python3 -m unittest discover -s cat -p 'test_*.py'

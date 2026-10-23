@@ -1,0 +1,15 @@
+# Public service English: design and acceptance (0.13.0)
+
+Approved scope: independent skill for single Chinese-to-English drafting, parallel review and batch sign/notice/instruction/name records across GB/T 30240 parts 1–10. No full legal, financial or clinical prose compliance claims. Require place/function, audience, proper names, jurisdiction and client terminology maps; unknown conditions remain pending.
+
+Public package contains authored summaries, bibliographic locators, standalone Python standard-library CLI and synthetic fixtures. Copyright originals, full extractions, OCR and term index stay in a separately configured private source root. Optional ~/.tiskill/public-service.json selects sourceRoot. No source configured means pending evidence and user-material workflow, not shipped local lookup.
+
+Source layer is immutable: hash originals/full.md/content lists/images; derived append-only generation directories contain HTML rows, OCR bounding boxes and a 74-block recovery ledger. candidate/verified/rejected are explicit. Only actual visual comparison can promote a row, with reviewer/method, locator and hash. OCR output is never a verified translation. Layout blocks, repeated rows, OCR lines and distinct term counts are different measures. Default search selects verified within one domain; candidates opt-in, never definitive. Full provenance and version travel with results.
+
+CLI: configure (validate, nonmutating unless --apply; refuse conflicting existing config), build-index (preview default, --apply creates exclusive generation), search (read-only JSON, domain required), batch (structural validation and pending review records; never translation generation or semantic scoring; exclusive optional output). Relative source pointers must remain inside source root; symlinks/traversal rejected. Records retain original input, client conditions, proposed translation/reason/evidence and review stage. No arbitrary SQL or external services.
+
+Source status: attempt each standard ID on official SAMR registry; unconfirmed status remains unknown, never infer from snippets. GB/T is recommended; actual contractual/legal adoption is separate. Annexes here are informative; examples do not prescribe unique translations. Culture 4.2.5 number reversal is source_conflict; business annex A metadata restoration must cite original only.
+
+Acceptance: all 74 image blocks have crop pointer, OCR result or explicit failure and status; representative rows from ten parts visually compared; sources unchanged by hash. Synthetic tests cover span parsing, candidate exclusion, domain isolation, missing registry, unsafe paths, immutable build/provenance, duplicate IDs, pending scope, retained client terms and exclusive export. Metadata/router/README list 12 skills at 0.13.0. Run existing validators/update tests; scoped managed sync preserves unrelated diagnosis customization. Local scoped commit only, no public push.
+
+Manual scenario matrix must cover each domain with positive, out-of-scope and conditional examples; these are acceptance criteria, not claimed model benchmark results. Any uncompleted visual verification stays visible in QA.

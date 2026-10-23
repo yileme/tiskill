@@ -1,6 +1,6 @@
 # tiskill 是什么
 
-tiskill 是 [@译了么](https://xhslink.cn/o/3UlkBC8GKzqv) 制作的口笔译学习与实践工具箱，包含 **11 个 Agent Skills**，当前版本 **[0.12.2](VERSION)**。安装到支持 Skills 的 Agent 后，把材料和想解决的问题交给它，就能开始阅读、练习、查证或审校。
+tiskill 是 [@译了么](https://xhslink.cn/o/3UlkBC8GKzqv) 制作的口笔译学习与实践工具箱，包含 **12 个 Agent Skills**，当前版本 **[0.13.0](VERSION)**。安装到支持 Skills 的 Agent 后，把材料和想解决的问题交给它，就能开始阅读、练习、查证或审校。
 
 | 你想推进的事 | 可以得到什么 |
 | --- | --- |
@@ -12,6 +12,9 @@ tiskill 是 [@译了么](https://xhslink.cn/o/3UlkBC8GKzqv) 制作的口笔译�
 | 从客户聊天推进到项目草案 | 需求简报、待确认问题、报价与回复草稿 |
 
 ## 本次更新
+
+**0.13.0 新增公共服务英文译写。** 单条译写、双语审校与批量待审记录；可选私有标准索引，公开包不含标准全文。脚本不自动翻译。[本版变化](docs/changes-0.13.0.md) · [设计与验收](docs/public-service-acceptance.md)
+
 
 **0.12.0 新增外刊与阅读伴读，共 11 项技能。** 支持网页剪藏、Markdown、PDF 指定页和 EPUB 指定章节，从读懂选段、积累表达到学习记录与氢刻卡片导出。[能力范围](docs/changes-0.12.0.md)
 
@@ -27,7 +30,7 @@ tiskill 是 [@译了么](https://xhslink.cn/o/3UlkBC8GKzqv) 制作的口笔译�
 npx -y skills add yileme/tiskill -g --all
 ```
 
-这会将公开版本的全部 11 项技能安装到 skills CLI 支持的 Agent 目标。只装到 Claude Code 和 Codex 可用：
+这会将公开版本的全部 12 项技能安装到 skills CLI 支持的 Agent 目标。只装到 Claude Code 和 Codex 可用：
 
 ```bash
 npx -y skills add yileme/tiskill -g --agent claude-code codex --skill '*' -y
@@ -68,7 +71,7 @@ npx -y skills add yileme/tiskill -g --agent claude-code codex --skill '*' -y
 
 导出后先预览，再由你人工导入氢刻。导出清单记录文件和卡片修订；你事后明确告知已导入，才记录导入确认。没有新增阅读前端、自动同步、通知或 SRS，也未验证实际氢刻导入。[使用契约](docs/reading.md) · [合成样例验收与限制](docs/reading-acceptance.md)
 
-## 全部 11 项技能
+## 全部 12 项技能
 
 | 命令 | 适合什么时候用 | 主要输出 |
 | --- | --- | --- |
@@ -82,6 +85,7 @@ npx -y skills add yileme/tiskill -g --agent claude-code codex --skill '*' -y
 | [`/tis-speaking-practice`](skills/tis-speaking-practice/SKILL.md) | 用真实材料听辨、跟读、复述 | 练习、反馈与自评 |
 | [`/tis-client-service`](skills/tis-client-service/SKILL.md) | 接洽笔译、口译或本地化项目 | 简报、报价、回复草稿及授权建档 |
 | [`/tis-reading`](skills/tis-reading/SKILL.md) | 网页剪藏、EPUB/PDF 选段、Markdown 阅读 | 来源笔记、词块句式、复述、实际输出与氢刻文件 |
+| [`/tis-public-service-english`](skills/tis-public-service-english/SKILL.md) | 公共场所名称、导向、警示、通知译写与批量审校 | 带场景条件、来源定位和证据状态的建议 |
 | [`/tis-update`](skills/tis-update/SKILL.md) | 同步本机已安装的技能 | 差异检查与受控同步 |
 
 

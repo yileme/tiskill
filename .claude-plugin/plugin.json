@@ -12,9 +12,10 @@
     "./skills/tis-speaking-practice",
     "./skills/tis-client-service",
     "./skills/tis-inclusive-language",
-    "./skills/tis-reading"
+    "./skills/tis-reading",
+    "./skills/tis-public-service-english"
   ],
-  "version": "0.12.2",
+  "version": "0.13.0",
   "homepage": "https://github.com/yileme/tiskill",
   "repository": "https://github.com/yileme/tiskill",
   "author": {

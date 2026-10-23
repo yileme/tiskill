@@ -1,5 +1,5 @@
 {
-  "version": "0.12.2",
-  "notice": "完善既有 SkELL 查证路径：短语例句、搭配关系、离线查询入口与证据边界",
-  "details_url": "https://github.com/yileme/tiskill/blob/main/docs/changes-0.12.2.md"
+  "version": "0.13.0",
+  "notice": "新增公共服务英文译写：场景审校、可选私有来源检索和批量待审记录",
+  "details_url": "https://github.com/yileme/tiskill/blob/main/docs/changes-0.13.0.md"
 }

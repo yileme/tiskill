@@ -1,0 +1,125 @@
+{
+  "sources": [
+    {
+      "part": 1,
+      "domain": "通则",
+      "standard": "GB/T 30240.1—2013",
+      "pdf_pages": 20,
+      "annexes": "A",
+      "annex_type": "informative",
+      "status_snapshot": "现行",
+      "checked_at": "2026-10-23T16:29:26.027335+08:00",
+      "official_detail": "https://openstd.samr.gov.cn/bzgk/gb/newGbInfo?hcno=B5DC1BA74C622EDF62CF9E5C76783952",
+      "status_method": "individual detail page read; not a search snippet"
+    },
+    {
+      "part": 2,
+      "domain": "交通",
+      "standard": "GB/T 30240.2—2017",
+      "pdf_pages": 32,
+      "annexes": "A/B",
+      "annex_type": "informative",
+      "status_snapshot": "现行",
+      "checked_at": "2026-10-23T16:29:26.027368+08:00",
+      "official_detail": "https://openstd.samr.gov.cn/bzgk/gb/newGbInfo?hcno=F0AB216AFB81831FA5AB4FC3F033E4C2",
+      "status_method": "individual detail page read; not a search snippet"
+    },
+    {
+      "part": 3,
+      "domain": "旅游",
+      "standard": "GB/T 30240.3—2017",
+      "pdf_pages": 24,
+      "annexes": "A/B",
+      "annex_type": "informative",
+      "status_snapshot": "现行",
+      "checked_at": "2026-10-23T16:29:26.027374+08:00",
+      "official_detail": "https://openstd.samr.gov.cn/bzgk/gb/newGbInfo?hcno=048091F233A86B671F06BB3D667F98B5",
+      "status_method": "individual detail page read; not a search snippet"
+    },
+    {
+      "part": 4,
+      "domain": "文化娱乐",
+      "standard": "GB/T 30240.4—2017",
+      "pdf_pages": 20,
+      "annexes": "A/B",
+      "annex_type": "informative",
+      "status_snapshot": "现行",
+      "checked_at": "2026-10-23T16:29:26.027379+08:00",
+      "official_detail": "https://openstd.samr.gov.cn/bzgk/gb/newGbInfo?hcno=23AB7386783C397C427B3B0E1F306E04",
+      "status_method": "individual detail page read; not a search snippet"
+    },
+    {
+      "part": 5,
+      "domain": "体育",
+      "standard": "GB/T 30240.5—2017",
+      "pdf_pages": 20,
+      "annexes": "A/B/C",
+      "annex_type": "informative",
+      "status_snapshot": "现行",
+      "checked_at": "2026-10-23T16:29:26.027383+08:00",
+      "official_detail": "https://openstd.samr.gov.cn/bzgk/gb/newGbInfo?hcno=91796B544AC4093C03E666C865470F6B",
+      "status_method": "individual detail page read; not a search snippet"
+    },
+    {
+      "part": 6,
+      "domain": "教育",
+      "standard": "GB/T 30240.6—2017",
+      "pdf_pages": 16,
+      "annexes": "A",
+      "annex_type": "informative",
+      "status_snapshot": "现行",
+      "checked_at": "2026-10-23T16:29:26.027387+08:00",
+      "official_detail": "https://openstd.samr.gov.cn/bzgk/gb/newGbInfo?hcno=ED8B8543CE237433657F07032A4770EB",
+      "status_method": "individual detail page read; not a search snippet"
+    },
+    {
+      "part": 7,
+      "domain": "医疗卫生",
+      "standard": "GB/T 30240.7—2017",
+      "pdf_pages": 24,
+      "annexes": "A/B/C",
+      "annex_type": "informative",
+      "status_snapshot": "现行",
+      "checked_at": "2026-10-23T16:29:26.027391+08:00",
+      "official_detail": "https://openstd.samr.gov.cn/bzgk/gb/newGbInfo?hcno=EFFF97AE05B8EB40B91AC5DCE6F9B39E",
+      "status_method": "individual detail page read; not a search snippet"
+    },
+    {
+      "part": 8,
+      "domain": "邮政电信",
+      "standard": "GB/T 30240.8—2017",
+      "pdf_pages": 20,
+      "annexes": "A/B",
+      "annex_type": "informative",
+      "status_snapshot": "现行",
+      "checked_at": "2026-10-23T16:29:26.027399+08:00",
+      "official_detail": "https://openstd.samr.gov.cn/bzgk/gb/newGbInfo?hcno=BBAA94683A70C4BA41782737329E230A",
+      "status_method": "individual detail page read; not a search snippet"
+    },
+    {
+      "part": 9,
+      "domain": "餐饮住宿",
+      "standard": "GB/T 30240.9—2017",
+      "pdf_pages": 28,
+      "annexes": "A/B/C",
+      "annex_type": "informative",
+      "status_snapshot": "现行",
+      "checked_at": "2026-10-23T16:29:26.027404+08:00",
+      "official_detail": "https://openstd.samr.gov.cn/bzgk/gb/newGbInfo?hcno=E95801F71081B2E143C53CD40976CE7B",
+      "status_method": "individual detail page read; not a search snippet"
+    },
+    {
+      "part": 10,
+      "domain": "商业金融",
+      "standard": "GB/T 30240.10—2017",
+      "pdf_pages": 28,
+      "annexes": "A/B/C",
+      "annex_type": "informative",
+      "status_snapshot": "现行",
+      "checked_at": "2026-10-23T16:29:26.027408+08:00",
+      "official_detail": "https://openstd.samr.gov.cn/bzgk/gb/newGbInfo?hcno=50CB993E081E3187264339A3544BE844",
+      "status_method": "individual detail page read; not a search snippet"
+    }
+  ],
+  "caution": "Status snapshot only; recheck for client project. Recommended standard is not automatically legally mandatory."
+}
