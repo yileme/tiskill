@@ -1,6 +1,6 @@
 # tiskill 是什么
 
-tiskill 是 [@译了么](https://xhslink.cn/o/3UlkBC8GKzqv) 制作的口笔译学习与实践工具箱，包含 **12 个 Agent Skills**，当前版本 **[0.13.0](VERSION)**。安装到支持 Skills 的 Agent 后，把材料和想解决的问题交给它，就能开始阅读、练习、查证或审校。
+tiskill 是 [@译了么](https://xhslink.cn/o/3UlkBC8GKzqv) 制作的口笔译学习与实践工具箱，包含 **13 个 Agent Skills**，当前版本 **[0.14.1](VERSION)**。安装到支持 Skills 的 Agent 后，把材料和想解决的问题交给它，就能开始阅读、练习、查证或审校。
 
 | 你想推进的事 | 可以得到什么 |
 | --- | --- |
@@ -13,14 +13,12 @@ tiskill 是 [@译了么](https://xhslink.cn/o/3UlkBC8GKzqv) 制作的口笔译�
 
 ## 本次更新
 
-**0.13.0 新增公共服务英文译写。** 单条译写、双语审校与批量待审记录；可选私有标准索引，公开包不含标准全文。脚本不自动翻译。[本版变化](docs/changes-0.13.0.md) · [设计与验收](docs/public-service-acceptance.md)
+**0.14.1 已更新，共 13 项技能。** 合并发布 0.14.0 的医学论文技能与 0.14.1 的术语查证补强：
 
+- **医学论文编辑与翻译**：新增 `/tis-medical-paper`，支持计划讨论、用户草稿审校与忠实中英互译；目标期刊要求优先，保留研究事实，不编造研究或代写整篇论文。参考 AMA 第 11 版（2020）的已选读内容，公开包只含原创指导和来源定位。
+- **专业术语查证**：在 `/tis-usage-evidence` 中核对术语在线的概念、学科、定义、英文与来源年度；区分已读条目、公布信息待核及本句适用性。
 
-**0.12.0 新增外刊与阅读伴读，共 11 项技能。** 支持网页剪藏、Markdown、PDF 指定页和 EPUB 指定章节，从读懂选段、积累表达到学习记录与氢刻卡片导出。[能力范围](docs/changes-0.12.0.md)
-
-**0.12.1 完善阅读反馈。** 按“词典依据→原文→本句解读→可迁移表达”解释词块，分清事实与推断；查证失败如实说明，每次只安排一个可完成的练习动作。[本版变化](docs/changes-0.12.1.md)
-
-**0.12.2 完善既有 SkELL 查证路径。** 增加可执行的浏览器检索协议与离线查询链接，分清短语用例、搭配关系和计数口径。[本版变化](docs/changes-0.12.2.md)
+[完整更新说明](docs/changes-0.14.1.md) · [医学来源与验收](docs/medical-paper-acceptance.md) · [术语实查与限制](docs/termonline-acceptance.md)。此前新增的公共服务英文译写与外刊伴读继续可用，历版变化见相应说明。
 
 ## 安装与开始
 
@@ -30,7 +28,7 @@ tiskill 是 [@译了么](https://xhslink.cn/o/3UlkBC8GKzqv) 制作的口笔译�
 npx -y skills add yileme/tiskill -g --all
 ```
 
-这会将公开版本的全部 12 项技能安装到 skills CLI 支持的 Agent 目标。只装到 Claude Code 和 Codex 可用：
+这会将公开版本的全部 13 项技能安装到 skills CLI 支持的 Agent 目标。只装到 Claude Code 和 Codex 可用：
 
 ```bash
 npx -y skills add yileme/tiskill -g --agent claude-code codex --skill '*' -y
@@ -71,7 +69,7 @@ npx -y skills add yileme/tiskill -g --agent claude-code codex --skill '*' -y
 
 导出后先预览，再由你人工导入氢刻。导出清单记录文件和卡片修订；你事后明确告知已导入，才记录导入确认。没有新增阅读前端、自动同步、通知或 SRS，也未验证实际氢刻导入。[使用契约](docs/reading.md) · [合成样例验收与限制](docs/reading-acceptance.md)
 
-## 全部 12 项技能
+## 全部 13 项技能
 
 | 命令 | 适合什么时候用 | 主要输出 |
 | --- | --- | --- |
@@ -79,13 +77,14 @@ npx -y skills add yileme/tiskill -g --agent claude-code codex --skill '*' -y
 | [`/tis-translation-practice`](skills/tis-translation-practice/SKILL.md) | 动笔前分析、比较译法、译后自查 | 任务分析、候选取舍、自查项 |
 | [`/tis-translation-diagnosis`](skills/tis-translation-diagnosis/SKILL.md) | 对照原文检查初稿、寻找训练重点 | 有依据的讲评、最小改法、练习 |
 | [`/tis-real-english`](skills/tis-real-english/SKILL.md) | 检查中译英或英文稿的表达风险 | 必改、可选优化与待核实项 |
-| [`/tis-usage-evidence`](skills/tis-usage-evidence/SKILL.md) | 找双语译例、回查译法，或问英文表达能否使用 | 实际来源、短证据与适用条件 |
+| [`/tis-usage-evidence`](skills/tis-usage-evidence/SKILL.md) | 核对专业术语、找双语译例、回查译法，或问英文表达能否使用 | 实际来源、短证据与适用条件 |
 | [`/tis-plain-language`](skills/tis-plain-language/SKILL.md) | 把中英文写清楚，删重复与套话 | 最小修改、全文重写或诊断 |
 | [`/tis-inclusive-language`](skills/tis-inclusive-language/SKILL.md) | 询问英文或中译英的包容性语言、性别、代词或身份称谓 | 有依据的局部判断、最小修改与适用条件 |
 | [`/tis-speaking-practice`](skills/tis-speaking-practice/SKILL.md) | 用真实材料听辨、跟读、复述 | 练习、反馈与自评 |
 | [`/tis-client-service`](skills/tis-client-service/SKILL.md) | 接洽笔译、口译或本地化项目 | 简报、报价、回复草稿及授权建档 |
 | [`/tis-reading`](skills/tis-reading/SKILL.md) | 网页剪藏、EPUB/PDF 选段、Markdown 阅读 | 来源笔记、词块句式、复述、实际输出与氢刻文件 |
 | [`/tis-public-service-english`](skills/tis-public-service-english/SKILL.md) | 公共场所名称、导向、警示、通知译写与批量审校 | 带场景条件、来源定位和证据状态的建议 |
+| [`/tis-medical-paper`](skills/tis-medical-paper/SKILL.md) | 医学论文计划、用户草稿审校与中英互译 | 优先问题、最小修改、来源定位与待核实项 |
 | [`/tis-update`](skills/tis-update/SKILL.md) | 同步本机已安装的技能 | 差异检查与受控同步 |
 
 

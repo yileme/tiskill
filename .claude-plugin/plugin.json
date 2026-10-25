@@ -13,9 +13,10 @@
     "./skills/tis-client-service",
     "./skills/tis-inclusive-language",
     "./skills/tis-reading",
-    "./skills/tis-public-service-english"
+    "./skills/tis-public-service-english",
+    "./skills/tis-medical-paper"
   ],
-  "version": "0.13.0",
+  "version": "0.14.1",
   "homepage": "https://github.com/yileme/tiskill",
   "repository": "https://github.com/yileme/tiskill",
   "author": {

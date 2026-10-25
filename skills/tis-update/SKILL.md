@@ -14,6 +14,6 @@ metadata:
 
 仅当用户明确要求更新，或上一条助手消息含更新提醒且用户回复 `1` 时执行；只是询问有无新版时仅检查。先确认安装渠道。通过 skills CLI 安装时，使用 `npx -y skills add yileme/tiskill -g` 并选择原安装的技能和 Agent；Claude Code 插件使用 `claude plugin marketplace update tiskill-skills` 后运行 `claude plugin update tis@tiskill-skills`。下文只适用于本地托管同步适配器；其源仓库由 `TIS_REPO_DIR` 指定，或从 `~/.tiskill/source.json` 的 `repo` 读取，未配置时请用户提供实际仓库位置，不猜测开发机路径。优先读取其中 VERSION 和技能目录。没有远端时不说已经取得网络最新版。
 
-执行 `python3 <仓库>/tools/sync_installed.py --check` 查看本机托管副本的差异；用户已要求同步时执行 `python3 <仓库>/tools/sync_installed.py --apply`。脚本只处理 `tis`、`tis-translation-practice`、`tis-translation-diagnosis`、`tis-real-english`、`tis-usage-evidence`、`tis-plain-language`、`tis-update`、`tis-speaking-practice`、`tis-client-service`、`tis-inclusive-language`、`tis-reading`、`tis-public-service-english` 这十二个目标；遇到用户修改过的副本或来源不可识别时跳过并报告，不覆盖它们。修改后再次执行 `--check` 验证。若用户另外安装了 Claude Code 插件，且明确要求更新该渠道，可使用该渠道自身的插件更新命令；不以全局安装覆盖其他技能。
+执行 `python3 <仓库>/tools/sync_installed.py --check` 查看本机托管副本的差异；用户已要求同步时执行 `python3 <仓库>/tools/sync_installed.py --apply`。脚本处理仓库允许列表中的 13 项技能（含 `tis-medical-paper`）；遇到用户修改过的副本或来源不可识别时跳过并报告，不覆盖它们。修改后再次执行 `--check` 验证。若用户另外安装了 Claude Code 插件，且明确要求更新该渠道，可使用该渠道自身的插件更新命令；不以全局安装覆盖其他技能。
 
 更新提醒从 `UPDATE.json` 读取；没有配置 `TIS_UPDATE_URL` 时只读本地仓库的公告。发布远端后设置该 URL 为公开仓库 raw UPDATE.json 地址，随后可跨机器接收新版通知。禁止在没有用户更新指令时静默同步。

@@ -1,6 +1,6 @@
 ---
 name: tis-usage-evidence
-description: 查证英译文词义、搭配、语域和译法，用可回溯的词典与语料证据支持翻译点评；用户说“找双语译例/回查译法”、需要从原文发现候选或问英文表达是否适用时也使用。
+description: 查证英译文词义、搭配、语域和译法，用可回溯的词典与语料证据支持翻译点评；用户说“找双语译例/回查译法”、需要从原文发现候选、核对专业术语或问英文表达是否适用时也使用。
 metadata:
   keywords:
     - translation usage evidence
@@ -9,6 +9,8 @@ metadata:
     - dictionary corpus citations
     - bilingual examples
     - translation candidate retrieval
+    - termonline terminology verification
+    - discipline concept definition
 ---
 
 # tis-usage-evidence：英语译法查证
@@ -20,6 +22,10 @@ metadata:
 ## 双语候选发现与回查
 
 用户说“找双语译例/回查译法”或尚无译法候选时，先读 [双语检索与溯源](references/bilingual-retrieval.md)，按译之有道、热词译、Linguee 的来源角色发现候选，再接下方目标语用法查证。原始出处核实、句对读取/对齐与本句适用性分别记录；遵守保密查询与反自动化停止边界。
+
+## 专业术语与概念查证
+
+用户要核对中文规范术语、英汉对应、学科定义或同名异义时，先读 [术语在线检索协议](references/termonline.md)，用官网真实条目核对概念、学科、来源与可见公布字段，再按需要补目标语词典/领域语料。区分审定公布、征求意见、百科及未明确身份；已读条目不等于公布信息已独立核实。客户简报优先约束当前任务，与来源冲突须显明并确认，不静默改写；术语命中不能独自证明本句搭配和语域。
 
 ## 查证流程
 

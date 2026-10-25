@@ -1,0 +1,7 @@
+# Medical-paper skill, 0.14.0
+
+Add tis-medical-paper as the thirteenth skill; ti-medical-paper is a documented request shorthand routed to it, not a second installed skill. Support planning, review and editing of user drafts, and faithful zh-en/en-zh medical manuscript translation. No invented study, results, ethics approval, citation or whole-paper drafting. Target-journal requirements control article format and style. AMA 11 (2020) is a dated editing source, not clinical guidance or a claim of current reporting-guideline compliance.
+
+Keep source PDF, batch PDFs, full MinerU results/images and per-page map in private project storage; public package contains authored procedures and exact source locators only. Split into <=180 physical pages; hash source and batches, verify contiguous coverage, safe extraction and page-index mapping. Distinguish automated conversion, selected text review and visual checks. Save checkpoint before upload; preserve failed/pending states. Optional private config selects root and manifest; standalone read-only search returns bounded candidate text and physical/printed locators, never verification status.
+
+Acceptance: all batches converted or explicit pending/error; primary selected chapters reviewed; public registration/version/count consistent; synthetic translation safety scenarios retained; lookup tests for mapping, missing data and path safety; repository validators/update tests; scoped managed sync preserves customized diagnosis; local public-file commit only, no push.

@@ -1,5 +1,5 @@
 {
-  "version": "0.13.0",
-  "notice": "新增公共服务英文译写：场景审校、可选私有来源检索和批量待审记录",
-  "details_url": "https://github.com/yileme/tiskill/blob/main/docs/changes-0.13.0.md"
+  "version": "0.14.1",
+  "notice": "新增医学论文草稿审校与忠实互译，完善术语在线的学科、定义和来源查证",
+  "details_url": "https://github.com/yileme/tiskill/blob/main/docs/changes-0.14.1.md"
 }

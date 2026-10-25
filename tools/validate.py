@@ -5,14 +5,14 @@ from pathlib import Path
 import re
 
 ROOT = Path(__file__).resolve().parents[1]
-NAMES = ("tis", "tis-translation-practice", "tis-translation-diagnosis", "tis-real-english", "tis-usage-evidence", "tis-plain-language", "tis-speaking-practice", "tis-update", "tis-client-service", "tis-inclusive-language", "tis-reading", "tis-public-service-english")
+NAMES = ("tis", "tis-translation-practice", "tis-translation-diagnosis", "tis-real-english", "tis-usage-evidence", "tis-plain-language", "tis-speaking-practice", "tis-update", "tis-client-service", "tis-inclusive-language", "tis-reading", "tis-public-service-english", "tis-medical-paper")
 VERSION = (ROOT / "VERSION").read_text().strip()
 assert re.fullmatch(r"(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)", VERSION)
 update = json.loads((ROOT / "UPDATE.json").read_text())
 market = json.loads((ROOT / ".claude-plugin/marketplace.json").read_text())
 plugin = json.loads((ROOT / ".claude-plugin/plugin.json").read_text())
 assert update["version"] == market["metadata"]["version"] == plugin["version"] == VERSION
-assert len(NAMES) == 12
+assert len(NAMES) == 13
 assert {p.name for p in (ROOT / "skills").iterdir() if p.is_dir()} == set(NAMES)
 assert 1 <= len(update["notice"]) <= 100
 assert len(market["plugins"]) == 1
@@ -76,7 +76,30 @@ for path in inclusive.rglob("*"):
     if path.is_file():
         assert path.suffix in (".md", ".json"), path
         assert "/Users/" not in path.read_text() and "MinerU/" not in path.read_text(), path
+# Medical-paper distribution is authored guidance plus a standalone lookup only.
+medical = ROOT / "skills/tis-medical-paper"
+for path in medical.rglob("*"):
+    if not path.is_file() or "__pycache__" in path.parts:
+        continue
+    assert path.suffix in (".md", ".py"), path
+    text = path.read_text()
+    assert not any(marker in text for marker in ("/Users/", "Zotero/storage/", "Nutstore Files", "sk-")), path
+    if path.suffix == ".md":
+        for target in re.findall(r"\[[^\]]*\]\(([^)]+)\)", text):
+            if "://" not in target and not target.startswith("#"):
+                assert (path.parent / target.split("#", 1)[0]).is_file(), (path, target)
+assert "ti-medical-paper" in (ROOT / "skills/tis/SKILL.md").read_text()
 readme = (ROOT / "README.md").read_text()
-assert f"[{VERSION}](VERSION)" in readme and "全部 12 项技能" in readme
+assert f"[{VERSION}](VERSION)" in readme and "全部 13 项技能" in readme
 assert all(f"skills/{name}/SKILL.md" in readme for name in NAMES)
+# Standalone evidence references and current terminology release navigation.
+for path in [*(ROOT / "skills/tis-usage-evidence").rglob("*.md"),
+             ROOT / "docs/changes-0.14.1.md", ROOT / "docs/termonline-acceptance.md"]:
+    text = path.read_text()
+    assert "/Users/" not in text, path
+    # Inline code contains citation templates, not rendered Markdown links.
+    text = re.sub(r"`[^`]*`", "", text)
+    for target in re.findall(r"\[[^\]]*\]\(([^)]+)\)", text):
+        if "://" not in target and not target.startswith("#"):
+            assert (path.parent / target.split("#", 1)[0]).is_file(), (path, target)
 print(f"tiskill v{VERSION}: metadata, structure and source boundaries valid")

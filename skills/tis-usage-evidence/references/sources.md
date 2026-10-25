@@ -8,6 +8,7 @@
 | 搭配与可用性 | 词典搭配例句、[Linggle](https://search.linggle.com/)、[Google Books Ngram](https://books.google.com/ngrams/) | 比较相同语法框架和同义范围中的搭配；读计数口径。Linggle 可用 `_` 查询未知位置；Ngram 比较短语时保持地区、年代、大小写一致。 |
 | 真实例句与搭配发现 | [SkELL](https://skell.sketchengine.eu/) Examples（concordance）与 Word Sketch | Examples 看词或短语所在句；Word Sketch 按语法关系找搭配，再点击搭配核对例句。核对词性、义项及主宾/修饰关系，不能凭同句共现判定搭配。 |
 | 译法候选发现 | [译之有道](https://yizhiyoudao.kuaizhan.com/)、[热词译](https://www.reciyi.com/)、[Linguee](https://www.linguee.com/) 双语词典与对齐例句 + 目标语词典/语料 | 核对原始来源链接、出版者及来源质量、两侧完整语境、领域、译向、义项及用途是否匹配；平行句是参照，不是标准答案。 |
+| 术语、概念与学科定义 | [术语在线](https://www.termonline.cn/)，按 [查询协议](termonline.md) 打开真实条目 | 核对规范用词、英文、学科、定义、具体作品、可见年度/版次及实际库别；区分条目已读与公布信息待核，不将百科/聚合或客户规则混为审定依据。 |
 | 专业与学术语域 | 领域官方文件、客户术语表、[OpenAlex](https://openalex.org/)、[PubMed](https://pubmed.ncbi.nlm.nih.gov/) | 核实术语由谁使用、是否同领域。OpenAlex 对含冠词/介词短语的计数可能退化成词袋；PubMed 要核对查询是否保留完整短语；不能直接拿粗略命中数证明搭配正确。 |
 
 可先用已安装的浏览器读取词典页面与语料页面；必要时使用适用的 CLI 工具。`scripts/ngram.mjs "candidate A,candidate B"` 可以比较 1900–2019 图书语料近十年比例，必要时加 `--corpus en-US-2019` 或 `en-GB-2019`。若命令失败或语料不能覆盖目标场景，换一个合适来源或标注未能查证，不凭模型语感补齐。

@@ -28,3 +28,7 @@
 仓库已经包含上述工作步骤、引用索引与边界说明，基本实践、筛查和诊断不以原始两个技能或外部私人目录存在为运行前提。naturalness 允许在环境明确提供原技能时按需阅读相关章节；这只是可选参考，不是隐藏的硬依赖。涉及英文用法的确定判断仍需要可访问的证据来源，不能访问时按技能要求保留待核实。
 
 两个独立技能及其约定的单向同步链由原处维护。tiskill 的整合不会自动同步它们的后续变更，修改 tiskill 也不修改源技能；若将来采纳源变更，应重新核对本映射及适用条件。此次仅补文档，不改独立技能、仓库技能行为或版本号。原项目许可与分发边界见 [README](../README.md)；本页不授予来源书籍或案例的再利用权。
+
+## Medical-paper editing
+
+AMA Manual of Style, 11th edition (2020), informs selected editing and source-check workflows in tis-medical-paper. See its references/sources.md for actual physical/printed page scope; conversion does not imply full close reading, current policy, clinical correctness or automatic reporting-guideline compliance. Substantive writing remains user-authored; AI supports planning, editing and faithful translation.
